@@ -28,7 +28,7 @@ import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
  
 public class KMeans extends Configured implements Tool{
-    private static final Log log = LogFactory.getLog(KMeans2.class);
+    private static final Log log = LogFactory.getLog(KMeans.class);
  
     private static final int K = 10;
     private static final int MAXITERATIONS = 300;

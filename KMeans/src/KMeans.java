@@ -1,0 +1,225 @@
+package kmeans;
+ 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Vector;
+ 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.conf.Configured;
+import org.apache.hadoop.filecache.DistributedCache;
+import org.apache.hadoop.fs.FSDataInputStream;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
+import org.apache.hadoop.util.Tool;
+import org.apache.hadoop.util.ToolRunner;
+ 
+public class KMeans extends Configured implements Tool{
+    private static final Log log = LogFactory.getLog(KMeans.class);
+ 
+    private static final int K = 10;
+    private static final int MAXITERATIONS = 300;
+    private static final double THRESHOLD = 0.01;
+     
+    public static boolean stopIteration(Configuration conf) throws IOException{
+        FileSystem fs=FileSystem.get(conf);
+        Path pervCenterFile=new Path("/user/hadoop/input/centers");
+        Path currentCenterFile=new Path("/user/hadoop/output/part-r-00000");
+        if(!(fs.exists(pervCenterFile) && fs.exists(currentCenterFile))){
+            log.info("涓や釜璐ㄥ績鏂囦欢闇�瑕佸悓鏃跺瓨鍦�");
+            System.exit(1);
+        }
+        //姣旇緝鍓嶅悗涓ゆ璐ㄥ績鐨勫彉鍖栨槸鍚﹀皬浜庨槇鍊硷紝鍐冲畾杩唬鏄惁缁х画
+        boolean stop=true;
+        String line1,line2;
+        FSDataInputStream in1=fs.open(pervCenterFile);
+        FSDataInputStream in2=fs.open(currentCenterFile);
+        InputStreamReader isr1=new InputStreamReader(in1);
+        InputStreamReader isr2=new InputStreamReader(in2);
+        BufferedReader br1=new BufferedReader(isr1);
+        BufferedReader br2=new BufferedReader(isr2);
+        Sample prevCenter,currCenter;
+        while((line1=br1.readLine())!=null && (line2=br2.readLine())!=null){
+            prevCenter=new Sample();
+            currCenter=new Sample();
+            String []str1=line1.split("\\s+");
+            String []str2=line2.split("\\s+");
+            assert(str1[0].equals(str2[0]));
+            for(int i=1;i <= Sample.DIMENTION;i++){
+                prevCenter.arr[i-1]=Double.parseDouble(str1[i]);
+                currCenter.arr[i-1]=Double.parseDouble(str2[i]);
+            }
+            if(Sample.getEulerDist(prevCenter, currCenter) > THRESHOLD){
+                stop=false;
+                break;
+            }
+        }
+        //濡傛灉杩樿杩涜涓嬩竴娆¤凯浠ｏ紝灏辩敤褰撳墠璐ㄥ績鏇夸唬涓婁竴娆＄殑璐ㄥ績
+        if(stop==false){
+            fs.delete(pervCenterFile,true);
+            if(fs.rename(currentCenterFile, pervCenterFile)==false){
+                log.error("璐ㄥ績鏂囦欢鏇挎崲澶辫触");
+                System.exit(1);
+            }
+        }
+        return stop;
+    }
+     
+    public static class ClusterMapper extends Mapper {
+        Vector centers = new Vector();
+        @Override
+        //娓呯┖centers
+        public void setup(Context context){
+            for (int i = 0; i < K; i++) {
+                centers.add(new Sample());
+            }
+        }
+        @Override
+        //浠庤緭鍏ユ枃浠惰鍏enters
+        public void map(LongWritable key, Text value, Context context)
+                throws IOException, InterruptedException {
+            String []str=value.toString().split("\\s+");
+            if(str.length!=Sample.DIMENTION+1){
+                log.error("璇诲叆centers鏃剁淮搴︿笉瀵�");
+                System.exit(1);
+            }
+            int index=Integer.parseInt(str[0]);
+            for(int i=1;i < str.length;i++)
+                centers.get(index).arr[i-1]=Double.parseDouble(str[i]);
+        }
+        @Override
+        //鎵惧埌姣忎釜鏁版嵁鐐圭鍝釜璐ㄥ績鏈�杩�
+        public void cleanup(Context context) throws IOException,InterruptedException {
+            Path []caches=DistributedCache.getLocalCacheFiles(context.getConfiguration());
+            if(caches==null || caches.length <= 0){
+                log.error("data鏂囦欢涓嶅瓨鍦�");
+                System.exit(1);
+            }
+            BufferedReader br=new BufferedReader(new FileReader(caches[0].toString()));
+            Sample sample;
+            String line;
+            while((line=br.readLine())!=null){
+                sample=new Sample();
+                String []str=line.split("\\s+");
+                for(int i=0;i < Sample.DIMENTION;i++)
+                    sample.arr[i]=Double.parseDouble(str[i]);
+                 
+                int index=-1;
+                double minDist=Double.MAX_VALUE;
+                for(int i=0;i < K;i++){
+                    double dist=Sample.getEulerDist(sample, centers.get(i));
+                    if(dist < minDist){
+                        minDist=dist;
+                        index=i;
+                    }
+                }
+                context.write(new IntWritable(index), sample);
+            }
+        }
+    }
+     
+    public static class UpdateCenterReducer extends Reducer {
+        int prev=-1;
+        Sample center=new Sample();;
+        int count=0;
+        @Override
+        //鏇存柊姣忎釜璐ㄥ績锛堥櫎鏈�鍚庝竴涓級
+        public void reduce(IntWritable key,Iterable values,Context context) throws IOException,InterruptedException{
+            while(values.iterator().hasNext()){
+                Sample value=values.iterator().next();
+                if(key.get()!=prev){
+                    if(prev!=-1){
+                        for(int i=0;i < center.arr.length;i++)
+                            center.arr[i]/=count;      
+                        context.write(new IntWritable(prev), center);
+                    }
+                    center.clear();
+                    prev=key.get();
+                    count=0;
+                }
+                for(int i=0;i < Sample.DIMENTION;i++)
+                    center.arr[i]+=value.arr[i];
+                count++;
+            }
+        }
+        @Override
+        //鏇存柊鏈�鍚庝竴涓川蹇�
+        public void cleanup(Context context) throws IOException,InterruptedException{
+            for(int i=0;i < center.arr.length;i++)
+                center.arr[i]/=count;
+            context.write(new IntWritable(prev), center);
+        }
+    }
+ 
+    @Override
+    public int run(String[] args) throws Exception {
+        Configuration conf=getConf();
+        FileSystem fs=FileSystem.get(conf);
+        Job job=new Job(conf);
+        job.setJarByClass(KMeans.class);
+         
+        //璐ㄥ績鏂囦欢姣忚鐨勭涓�涓暟瀛楁槸绱㈠紩
+        FileInputFormat.setInputPaths(job, "/user/hadoop/input/centers");
+        Path outDir=new Path("/user/hadoop/output");
+        fs.delete(outDir,true);
+        FileOutputFormat.setOutputPath(job, outDir);
+         
+        job.setInputFormatClass(TextInputFormat.class);
+        job.setOutputFormatClass(TextOutputFormat.class);
+        job.setMapperClass(ClusterMapper.class);
+        job.setReducerClass(UpdateCenterReducer.class);
+        job.setOutputKeyClass(IntWritable.class);
+        job.setOutputValueClass(Sample.class);
+         
+        return job.waitForCompletion(true)?0:1;
+    }
+    public static void main(String[] args) throws Exception {
+        Configuration conf = new Configuration();
+        FileSystem fs=FileSystem.get(conf);
+         
+        //鏍锋湰鏁版嵁鏂囦欢涓瘡涓牱鏈笉闇�瑕佹爣璁扮储寮�
+        Path dataFile=new Path("/user/hadoop/input/data");
+        DistributedCache.addCacheFile(dataFile.toUri(), conf);
+ 
+        int iteration = 0;
+        int success = 1;
+        do {
+            success ^= ToolRunner.run(conf, new KMeans(), args);
+            log.info("iteration "+iteration+" end");
+        } while (success == 1 && iteration++ < MAXITERATIONS
+                && (!stopIteration(conf)));
+        log.info("Success.Iteration=" + iteration);
+         
+        //杩唬瀹屾垚鍚庡啀鎵ц涓�娆apper锛岃緭鍑烘瘡涓牱鏈偣鎵�灞炵殑鍒嗙被--鍦�/user/hadoop/output2/part-m-00000涓�
+        //璐ㄥ績鏂囦欢淇濆瓨鍦�/user/hadoop/input/centers涓�
+        Job job=new Job(conf);
+        job.setJarByClass(KMeans.class);
+         
+        FileInputFormat.setInputPaths(job, "/user/hadoop/input/centers");
+        Path outDir=new Path("/user/hadoop/output2");
+        fs.delete(outDir,true);
+        FileOutputFormat.setOutputPath(job, outDir);
+         
+        job.setInputFormatClass(TextInputFormat.class);
+        job.setOutputFormatClass(TextOutputFormat.class);
+        job.setMapperClass(ClusterMapper.class);
+        job.setNumReduceTasks(0);
+        job.setOutputKeyClass(IntWritable.class);
+        job.setOutputValueClass(Sample.class);
+         
+        job.waitForCompletion(true);
+    }
+}
