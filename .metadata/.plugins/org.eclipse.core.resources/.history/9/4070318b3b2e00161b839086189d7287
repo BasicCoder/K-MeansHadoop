@@ -142,9 +142,9 @@ public class KMeans extends Configured implements Tool{
         int count=0;
       //更新每个质心（除最后一个）
         @Override
-        public void reduce(IntWritable key, Iterable<Sample> values, Context context) throws IOException, InterruptedException{
-            while(values.iterator().hasNext()){
-                Sample value = (Sample)values.iterator().next();
+        public void reduce(IntWritable key, Iterator<Sample> values, Context context) throws IOException, InterruptedException{
+            while(values.hasNext()){
+                Sample value = (Sample)values.next();
                 if(key.get()!=prev){
                     if(prev!=-1){
                         for(int i=0;i < center.arr.length;i++)

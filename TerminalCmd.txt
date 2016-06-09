@@ -2,4 +2,16 @@ https://raw.githubusercontent.com/BasicCoder/K-MeansHadoop/master/KMeans.java
 https://raw.githubusercontent.com/BasicCoder/K-MeansHadoop/master/Sample.java
 https://raw.githubusercontent.com/BasicCoder/K-MeansHadoop/master/data
 
+
 javac -cp ../share/hadoop/common/hadoop-common-2.6.0.jar:../share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.6.0.jar:../share/hadoop/common/lib/commons-cli-1.2.jar:./commons-logging-1.2/commons-logging-1.2.jar:./commons-logging-1.2/commons-logging-1.2-javadoc.jar KMeans.java Sample.java -d ./
+
+javac -cp ../share/hadoop/common/hadoop-common-2.6.0.jar:../share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.6.0.jar:../share/hadoop/common/lib/commons-cli-1.2.jar DominNameCount.java -d ./
+
+https://raw.githubusercontent.com/BasicCoder/K-MeansHadoop/master/DominNameCount/code/DominNameCount.java
+https://raw.githubusercontent.com/BasicCoder/K-MeansHadoop/master/DominNameCount/htmlData/1.html
+
+jar -cvf DominNameCount.jar DominNameCount*.class
+
+/usr/local/hadoop/bin/hadoop jar DominNameCount.jar DominNameCount input2 output5
+
+/usr/local/hadoop/bin/hadoop jar DominNameCount.jar DominNameCount input3 output5
