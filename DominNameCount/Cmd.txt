@@ -1,0 +1,17 @@
+javac -cp ../share/hadoop/common/hadoop-common-2.6.0.jar:../share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.6.0.jar:../share/hadoop/common/lib/commons-cli-1.2.jar DominNameCount.java -d ./
+
+jar -cvf DominNameCount.jar DominNameCount*.class
+
+/usr/local/hadoop/bin/hadoop jar DominNameCount.jar DominNameCount input2 output5
+
+/usr/local/hadoop/bin/hadoop jar DominNameCount.jar DominNameCount input3 output5
+
+bin/hdfs dfs -rmdir output5
+
+bin/hdfs dfs -rm output5/*
+
+bin/hdfs dfs -rmdir output5/_temporary/*
+
+bin/hdfs dfs -cat output5/*
+
+rm DominNameCount*

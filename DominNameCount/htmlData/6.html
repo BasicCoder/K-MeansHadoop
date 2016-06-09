@@ -1,0 +1,381 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0063)http://www.cnblogs.com/liqizhou/archive/2012/05/14/2499498.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script async="" src="./hadoop，用户制定类 - Liqizhou - 博客园_files/analytics.js"></script>
+
+<title>hadoop，用户制定类 - Liqizhou - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./hadoop，用户制定类 - Liqizhou - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./hadoop，用户制定类 - Liqizhou - 博客园_files/bundle-SimpleBlue.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/liqizhou/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/liqizhou/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/liqizhou/wlwmanifest.xml">
+<script type="text/javascript" src="./hadoop，用户制定类 - Liqizhou - 博客园_files/encoder.js"></script><script src="./hadoop，用户制定类 - Liqizhou - 博客园_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'liqizhou', cb_enable_mathjax=false;</script>
+<script src="./hadoop，用户制定类 - Liqizhou - 博客园_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+		
+<!--done-->
+<div class="title"><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/liqizhou/">BIGBIGBOAT</a></div>
+<div class="subtitle">Liqizhou</div>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li id="nav_sitehome"><a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li id="nav_myhome"><a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/liqizhou/">首页</a></li>
+<li id="nav_q"><a class="menu" href="http://q.cnblogs.com/">博问</a></li>
+<li id="nav_ing"><a class="menu" href="http://home.cnblogs.com/ing/">闪存</a></li>
+<li id="nav_newpost"><a id="MyLinks1_NewPostLink" class="menu" rel="nofollow" href="http://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li id="nav_contact"><a id="MyLinks1_ContactLink" class="menu" rel="nofollow" href="http://msg.cnblogs.com/send/Liqizhou">联系</a></li>
+<li id="nav_rss"><a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/liqizhou/rss">订阅</a>
+<!--<a id="MyLinks1_XMLLink" class="aHeaderXML" href="http://www.cnblogs.com/liqizhou/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li id="nav_admin"><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://i.cnblogs.com/">管理</a></li>
+</ul>
+
+		<div class="blogStats">
+			
+			
+<!--done-->
+随笔-34&nbsp;
+文章-0&nbsp;
+评论-47&nbsp;
+
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="./hadoop，用户制定类 - Liqizhou - 博客园_files/hadoop，用户制定类 - Liqizhou - 博客园.html">hadoop，用户制定类</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p>mapreduce是一个很精巧的构思和设计，对于很多计算问题，程序员通常可以使用默认设置取处理诸多底层的细节，但是，这并不意味着在解决复杂问题时，程序员就可以完全使用这二个函数就可以搞定一切，它还需要更加复杂和灵活的处理机制以及高级的编程技术和方法。本节介绍hadoop中mapreduce比较高级的方法---用户制定类。为什么要用户自定义类，一种直观的猜测就是基本的mapreduce处理不了或者处理的效果不好，才有可能用到用户制定，随着深入的学习，这些问题到处可见。比如文档的倒排索引，制定(优化）的目的就是减少中间键，从而减少每次的读写I/O和网络的压力。</p>
+<h3><span style="color: #800000;">1. &nbsp;用户自定义数组类型</span></h3>
+<p>&nbsp; &nbsp; 虽然hadoop中内置8种数据类型，我见过8种，但不一定就8种，这里就认为是8种吧，他们都实现了WritableComparable接口，这种好处就是可以被序列化进行网路传输和文件存储。BooleanWritable, ByteWritable, FloatWritable, IntWritable,LongWritable,Text, NullWritble，前几种大家都可以猜到表示是什么数据类型，Text表示使用UTF格式的存储的文本。好像visual stdio 中text控件，也是对String类型的一种包装。</p>
+<p>&nbsp; &nbsp; 自定义类型必须符合二个条件，第一：实现Writable接口。第二：如果该函数需要作为主键Key使用，或者要比较数值大小时，则要实现WritableComparable接口。下例子是一个圆为例。circle</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./hadoop，用户制定类 - Liqizhou - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span> Cricle <span style="color: #0000ff;">implements</span> Writable&lt;Circle&gt;<span style="color: #000000;">{
+</span><span style="color: #008080;"> 2</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">float</span><span style="color: #000000;"> radius,x,y;
+</span><span style="color: #008080;"> 3</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">float</span> GetRadius(){<span style="color: #0000ff;">return</span><span style="color: #000000;"> radius;}
+</span><span style="color: #008080;"> 4</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">float</span> GetX(){<span style="color: #0000ff;">return</span><span style="color: #000000;"> x;}
+</span><span style="color: #008080;"> 5</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">float</span> GetY(){<span style="color: #0000ff;">return</span><span style="color: #000000;"> y;}
+</span><span style="color: #008080;"> 6</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> readFields(DataInput in)<span style="color: #0000ff;">throws</span><span style="color: #000000;"> IOException{
+</span><span style="color: #008080;"> 7</span>         radius=<span style="color: #000000;">in.readFloat();
+</span><span style="color: #008080;"> 8</span>         x=<span style="color: #000000;">in.readFloat();
+</span><span style="color: #008080;"> 9</span>         y=<span style="color: #000000;">in.readFloat();
+</span><span style="color: #008080;">10</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">11</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> write(DataOutput out)<span style="color: #0000ff;">throws</span><span style="color: #000000;"> IOException{
+</span><span style="color: #008080;">12</span> <span style="color: #000000;">        out.writeFloat(radius);
+</span><span style="color: #008080;">13</span> <span style="color: #000000;">        out.writeFloat(x);
+</span><span style="color: #008080;">14</span> <span style="color: #000000;">        out.writeFloat(y);
+</span><span style="color: #008080;">15</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">16</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">int</span><span style="color: #000000;"> CompareTo(Circle cl){
+</span><span style="color: #008080;">17</span>         <span style="color: #0000ff;">if</span>(cl.radius==<span style="color: #0000ff;">this</span><span style="color: #000000;">.radius)
+</span><span style="color: #008080;">18</span>             <span style="color: #0000ff;">return</span> 0<span style="color: #000000;">;
+</span><span style="color: #008080;">19</span>         <span style="color: #0000ff;">if</span>(cl.x&gt;<span style="color: #0000ff;">this</span><span style="color: #000000;">.x)
+</span><span style="color: #008080;">20</span>             <span style="color: #0000ff;">return</span> 1<span style="color: #000000;">;
+</span><span style="color: #008080;">21</span>         <span style="color: #0000ff;">if</span>(cl.y&lt;<span style="color: #0000ff;">this</span><span style="color: #000000;">.y)
+</span><span style="color: #008080;">22</span>             <span style="color: #0000ff;">return</span> -1<span style="color: #000000;">;
+</span><span style="color: #008080;">23</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">24</span> }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./hadoop，用户制定类 - Liqizhou - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>以上代码就是手写的，没有进行测试，肯定还有错误，只是向说明问题。readFields() 和write()实现Writable接口中定义的二中方法。</p>
+<p>&nbsp;</p>
+<h3><span style="color: #800000;">2. 用户制定输入/输出</span></h3>
+<p>尽管Hadoop提供了较为丰富的数据输入/输出格式，可以满足很多应用的需要，但是，对于特殊的要求，还是要用户自己制定。比如说，Hadoop默认的数据输入格式为TextInputFormat，可以将文本文件分块并逐行读入以便Map节点进行处理，每行所产生的Key是文本的字节位置的偏移量，而value就是该行的内日内个。但现在需要文件名@文本偏移量作为key，所以就需要制定输入类，假定现在制定一个数据输入格式FileNameInputFormat和fileNameRecordReader,比便直接产生FileName@lineoffset.</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./hadoop，用户制定类 - Liqizhou - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span> FileNameInputFormat <span style="color: #0000ff;">extends</span> FileInputForamt&lt;Text,Text&gt;<span style="color: #000000;">{
+    </span><span style="color: #0000ff;">public</span> RecordReader&lt;Text,Text&gt;createRecordReader(InputSplit split,TaskAttemptContext context)<span style="color: #0000ff;">throws</span><span style="color: #000000;"> IOException{
+        FileNameRecordReader fnrr </span>= <span style="color: #0000ff;">new</span><span style="color: #000000;"> FileNameRecordReader();
+        fnrr.initialize(split,context);
+    }
+}<br>
+</span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span> FileNameRecordReader <span style="color: #0000ff;">extends</span><span style="color: #000000;">
+            RecordReader</span>&lt;Text, Text&gt;<span style="color: #000000;"> {
+        String FileName;
+        LineRecordReader lrr </span>= <span style="color: #0000ff;">new</span><span style="color: #000000;"> LineRecordReader();
+
+        </span><span style="color: #0000ff;">public</span> Text getCurrentKey() <span style="color: #0000ff;">throws</span><span style="color: #000000;"> IOException {
+            </span><span style="color: #0000ff;">return</span> <span style="color: #0000ff;">new</span> Text("(" + FileName + "@" + lrr.getCurrentKey() + ")"<span style="color: #000000;">);
+        }
+
+        </span><span style="color: #0000ff;">public</span> Text getCurrentValue() <span style="color: #0000ff;">throws</span><span style="color: #000000;"> IOException, InterruptedException {
+            </span><span style="color: #0000ff;">return</span> <span style="color: #0000ff;">new</span><span style="color: #000000;"> Text(lrr.getCurrentKey().toString());
+        }
+
+        </span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> initialize(InputSplit arg0, TaskAttemptContext arg1)
+                </span><span style="color: #0000ff;">throws</span><span style="color: #000000;"> IOException {
+            lrr.initialize(arg0, arg1);
+            FileName </span>=<span style="color: #000000;"> ((FileSplit) arg0).getPath().getName();
+        }</span><span style="color: #000000;">
+}</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./hadoop，用户制定类 - Liqizhou - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;没事什么好讲的，仔细看都能看的懂，输出就不讲了，和输入差不多。</p>
+<p>&nbsp;</p>
+<h3><span style="color: #800000;">3. 用户制定Patritioner和Combiner</span></h3>
+<p>&nbsp; &nbsp;Patritioner来完成中间结果向Reduce节点分区处理，通常是利用hash进行分配，hash划分主要是靠主键进行划分，即相同的主键划分到相同桶中，在mapreduce中就是划分到相同的reduce中。那么现在设想一个问题，我需要将这样的数据划分到一个reduce中，该怎么办？ 数据为 hello:1, hello:2,hello:3,hello:4,......., 显然，用hash直接划分是不行的，这是我们可以观察到这些数据都具有一个hello，我们只需要在提取hello作为主键，在用hash划分，就可以把这些数据都划分到同一个reduce中，下面就个例子，给出Patritioner代码：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./hadoop，用户制定类 - Liqizhou - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span> NParterioner <span style="color: #0000ff;">extends</span> HashPartitioner&lt;Text,Text&gt;<span style="color: #000000;">
+{
+    </span><span style="color: #0000ff;">public</span> getPartition(Text key,Text value, <span style="color: #0000ff;">int</span><span style="color: #000000;"> numReduceTasks){
+        
+        String t</span>=key.toString().split(":")[0<span style="color: #000000;">];
+        Text term;
+        term.set(t);
+        </span><span style="color: #0000ff;">super</span><span style="color: #000000;">.getPartition(term,value,numReduceTasks);
+    }
+}</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./hadoop，用户制定类 - Liqizhou - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>还有像map，reduce， combiner的制定都是一样的道理。</p>
+<p>&nbsp;</p>
+<p>总结：</p>
+<p>&nbsp; &nbsp; &nbsp; 用户类的制定主要取决于特定的应用的场合，但其目标都是不变的（减少中间结果来减小I/O和网络传输数据的压力）。</p>
+<hr>
+<p><span style="font-size: 12px; color: #800000;">作者：BIGBIGBOAT/Liqizhou</span></p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/liqizhou/category/379677.html">Hadoop和并行计算</a></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/liqizhou/tag/hadoop/">hadoop</a>, <a href="http://www.cnblogs.com/liqizhou/tag/%E7%94%A8%E6%88%B7%E5%88%B6%E5%AE%9A%E7%B1%BB/">用户制定类</a></div>
+<div id="blog_post_info"><div id="green_channel">
+绿色通道：
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(2499498,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://msg.cnblogs.com/send/Liqizhou" target="_blank">与我联系</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./hadoop，用户制定类 - Liqizhou - 博客园_files/icon_weibo_24.png" alt=""></a>
+</div>
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/liqizhou/" target="_blank"><img src="./hadoop，用户制定类 - Liqizhou - 博客园_files/sample_face.gif" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/liqizhou/">Liqizhou</a><br>
+<a href="http://home.cnblogs.com/u/liqizhou/followees">关注 - 1</a><br>
+<a href="http://home.cnblogs.com/u/liqizhou/followers">粉丝 - 200</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow">
+    <a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+    <div class="diggit" onclick="votePost(2499498,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">1</span>
+    </div>
+	<div class="buryit" onclick="votePost(2499498,&#39;Bury&#39;)"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/14/2499112.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/liqizhou/archive/2012/05/14/2499112.html" title="发布于2012-05-14 11:39">HBase 简介</a><br><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/14/2499653.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/liqizhou/archive/2012/05/14/2499653.html" title="发布于2012-05-14 17:11">MapReduce，组合式，迭代式，链式</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2012-05-14 15:55</span> <a href="http://www.cnblogs.com/liqizhou/">Liqizhou</a> 阅读(<span id="post_view_count">2264</span>) 评论(<span id="post_comment_count">0</span>)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=2499498" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/liqizhou/archive/2012/05/14/2499498.html#" onclick="AddToWz(2499498);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=103747,cb_entryId=2499498,cb_blogApp=currentBlogApp,cb_blogUserGuid='80ad1c79-451f-e111-b422-842b2b196315',cb_entryCreatedDate='2012/5/14 15:55:00';loadViewCount(cb_entryId);</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" id="lnk_RefreshComments" onclick="return RefreshCommentList();">刷新评论</a><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/14/2499498.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/14/2499498.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="site_nav_under"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://www.rongcloud.cn/" target="_blank">【推荐】融云即时通讯云－专注为 App 开发者提供IM云服务</a><br><a href="https://www.jpush.cn/" target="_blank">【推荐】免费集成极光推送SDK，让APP实现高安全、高并发的推送功能</a><br><a href="http://click.aliyun.com/m/1328/" target="_blank">【专享】阿里云9折优惠码：bky901</a><br></div>
+<div id="opt_under_post"></div>
+<script type="text/javascript">
+    var enableGoogleAd = canShowAdsense(); 
+    fixPostBodyFormat();
+</script>
+<div id="google_ad_c1" class="c_ad_block"><object width="300" height="250" data="http://img.cnblogs.com/ad/IBM_Bluemix_C1.swf" type="application/x-shockwave-flash"><param name="src" value="http://img.cnblogs.com/ad/IBM_Bluemix_C1.swf"></object></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/528937/" target="_blank">联创永宣数千万元人民币投资哈工大机器人集团</a><br> ·  <a href="http://news.cnblogs.com/n/528936/" target="_blank">NASA用微软的HoloLens能干嘛？</a><br> ·  <a href="http://news.cnblogs.com/n/528935/" target="_blank">Facebook向记者开放Mentions 可视频直播新闻</a><br> ·  <a href="http://news.cnblogs.com/n/528934/" target="_blank">Cloudera旨在以Spark取代MapReduce作为默认Hadoop框架</a><br> ·  <a href="http://news.cnblogs.com/n/528933/" target="_blank">IBM与ARM牵手全面推进物联网合作，增收或达数十亿美元</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="google_ad_c2" class="c_ad_block"><a href="http://jiuye.jikexueyuan.com/train/android?hmsr=cnb_jiuye_android_banner_09.08" target="_blank"><img width="468" height="60" src="./hadoop，用户制定类 - Liqizhou - 博客园_files/24442-20150908103403950-481956115.jpg" alt=""></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/519485/" target="_blank">软件设计杂谈</a><br> ·  <a href="http://kb.cnblogs.com/page/527253/" target="_blank">打破定式，突破屏障，走出自己的创意舒适区</a><br> ·  <a href="http://kb.cnblogs.com/page/527139/" target="_blank">关于软件开发，你老板不知道的7件事</a><br> ·  <a href="http://kb.cnblogs.com/page/526769/" target="_blank">关于烂代码的那些事（中）</a><br> ·  <a href="http://kb.cnblogs.com/page/526768/" target="_blank">关于烂代码的那些事（上）</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 200);
+});
+</script>
+</div>
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/liqizhou/">Liqizhou</a><br>园龄：<a href="http://home.cnblogs.com/u/liqizhou/" title="入园时间：2011-12-05">3年9个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/liqizhou/followers/">200</a><br>关注：<a href="http://home.cnblogs.com/u/liqizhou/followees/">1</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger(&#39;80ad1c79-451f-e111-b422-842b2b196315&#39;)">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="calendar"><div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="日历">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2012/04/01&#39;);return false;">&lt;</a></td><td align="center">2012年5月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2012/06/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td align="center">1</td><td align="center">2</td><td align="center">3</td><td align="center">4</td><td class="CalWeekendDay" align="center">5</td></tr><tr><td class="CalWeekendDay" align="center">6</td><td align="center">7</td><td align="center">8</td><td align="center">9</td><td align="center"><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/10.html"><u>10</u></a></td><td align="center"><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/11.html"><u>11</u></a></td><td class="CalWeekendDay" align="center"><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/12.html"><u>12</u></a></td></tr><tr><td class="CalWeekendDay" align="center">13</td><td align="center"><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/14.html"><u>14</u></a></td><td align="center"><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/15.html"><u>15</u></a></td><td align="center"><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/16.html"><u>16</u></a></td><td align="center"><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/17.html"><u>17</u></a></td><td align="center">18</td><td class="CalWeekendDay" align="center">19</td></tr><tr><td class="CalWeekendDay" align="center"><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/20.html"><u>20</u></a></td><td align="center">21</td><td align="center">22</td><td align="center">23</td><td align="center">24</td><td align="center"><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/25.html"><u>25</u></a></td><td class="CalWeekendDay" align="center">26</td></tr><tr><td class="CalWeekendDay" align="center">27</td><td align="center"><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/28.html"><u>28</u></a></td><td align="center">29</td><td align="center"><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/30.html"><u>30</u></a></td><td align="center">31</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td></tr><tr><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td><td class="CalOtherMonthDay" align="center">7</td><td class="CalOtherMonthDay" align="center">8</td><td class="CalOtherMonthDay" align="center">9</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script></div>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/liqizhou/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/liqizhou/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/liqizhou/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/liqizhou/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/liqizhou/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+<ul>
+
+</ul>
+</div>
+</div></div><div id="sidebar_toptags" class="sidebar-block">
+<div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/liqizhou/tag/MapReduce/">MapReduce</a>(8)</li><li><a href="http://www.cnblogs.com/liqizhou/tag/hadoop/">hadoop</a>(5)</li><li><a href="http://www.cnblogs.com/liqizhou/tag/HBase/">HBase</a>(4)</li><li><a href="http://www.cnblogs.com/liqizhou/tag/adaboost/">adaboost</a>(2)</li><li><a href="http://www.cnblogs.com/liqizhou/tag/Mysql/">Mysql</a>(2)</li><li><a href="http://www.cnblogs.com/liqizhou/tag/Tri-training/">Tri-training</a>(2)</li><li><a href="http://www.cnblogs.com/liqizhou/tag/YARN%2FMRv2/">YARN/MRv2</a>(1)</li><li><a href="http://www.cnblogs.com/liqizhou/tag/%E5%8D%8A%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/">半监督学习</a>(1)</li><li><a href="http://www.cnblogs.com/liqizhou/tag/%E5%8F%82%E6%95%B0/">参数</a>(1)</li><li><a href="http://www.cnblogs.com/liqizhou/tag/%E4%BB%8EB%20%E6%A0%91%E3%80%81B%2B%20%E6%A0%91%E3%80%81B%2A%20%E6%A0%91%E8%B0%88%E5%88%B0R%20%E6%A0%91/">从B 树、B+ 树、B* 树谈到R 树</a>(1)</li><li><a href="http://www.cnblogs.com/liqizhou/tag/">更多</a></li>
+</ul>
+</div></div><div id="sidebar_categories">
+<div class="catListPostCategory">
+<h3 class="catListTitle">随笔分类</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/liqizhou/category/379677.html">Hadoop和并行计算(9)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/liqizhou/category/379675.html">半监督学习(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/liqizhou/category/388185.html">地理信息系统(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/liqizhou/category/379678.html">个性化推荐(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/liqizhou/category/374888.html">机器学习算法(15)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/liqizhou/category/383830.html">计算广告学(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/liqizhou/category/379679.html">数据结构(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/liqizhou/category/379680.html">新闻</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catListPostArchive">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/liqizhou/archive/2014/03.html">2014年3月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/liqizhou/archive/2012/09.html">2012年9月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/liqizhou/archive/2012/08.html">2012年8月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/liqizhou/archive/2012/07.html">2012年7月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/liqizhou/archive/2012/06.html">2012年6月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/liqizhou/archive/2012/05.html">2012年5月 (24)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_6" href="http://www.cnblogs.com/liqizhou/archive/2012/04.html">2012年4月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_7" href="http://www.cnblogs.com/liqizhou/archive/2011/12.html">2011年12月 (1)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+	<div id="RecentCommentsBlock"><ul>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/12/2497220.html#3215699">1. Re:Meanshift，聚类算法</a></li>
+    <li class="recent_comment_body">您好 写的很不错。我还需要再仔细分析下 ，meanshift和kmeans哪个更好呢？能发一份meanshift代码给我么 老师说从网上自己搜索的容易有病毒。。谢谢啦 （1107652677@qq.c......</li>
+    <li class="recent_comment_author">--nnw</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/12/2497220.html#3174271">2. Re:Meanshift，聚类算法</a></li>
+    <li class="recent_comment_body">哈哈，学习了，有空再仔细研究···</li>
+    <li class="recent_comment_author">--一晌贪欢</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/12/2497220.html#3138615">3. Re:Meanshift，聚类算法</a></li>
+    <li class="recent_comment_body">請問參考文獻有哪些？</li>
+    <li class="recent_comment_author">--蔣神</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/17/2504279.html#3075469">4. Re:MapReduce操作HBase</a></li>
+    <li class="recent_comment_body">教程最起码有两处错误，<br>1、throws 拼写错误<br>2、StringBuilder 空指针</li>
+    <li class="recent_comment_author">--名称必须要长</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/12/2497220.html#3053438">5. Re:Meanshift，聚类算法</a></li>
+    <li class="recent_comment_body">可以发一份meanshift聚类算法的c代码给我吗，邮箱1174833693@qq.com</li>
+    <li class="recent_comment_author">--Your-Darcy</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/12/2497220.html">1. Meanshift，聚类算法(43043)</a></li><li><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/11/2495788.html">2. SVM（三），支持向量机，线性不可分和核函数(16589)</a></li><li><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/17/2504279.html">3. MapReduce操作HBase(16532)</a></li><li><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/11/2495689.html">4. SVM(二）拉格朗日对偶问题(16430)</a></li><li><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/16/2503458.html">5. Hadoop,MapReduce操作Mysql(13643)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/12/2497220.html">1. Meanshift，聚类算法(13)</a></li><li><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/10/2494558.html">2. Random forests， 随机森林，online random forests(7)</a></li><li><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/11/2495689.html">3. SVM(二）拉格朗日对偶问题(5)</a></li><li><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/16/2503458.html">4. Hadoop,MapReduce操作Mysql(4)</a></li><li><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/14/2499653.html">5. MapReduce，组合式，迭代式，链式(3)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/12/2497220.html">1. Meanshift，聚类算法(13)</a></li><li><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/11/2495537.html">2. SVM(一) 问题的提出(6)</a></li><li><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/11/2496155.html">3. 半监督学习(4)</a></li><li><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/11/2495689.html">4. SVM(二）拉格朗日对偶问题(3)</a></li><li><a href="http://www.cnblogs.com/liqizhou/archive/2012/04/23/2466578.html">5. AdaBoost ，online Adaboost(3)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2015 Liqizhou
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body></html>

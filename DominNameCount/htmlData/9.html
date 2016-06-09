@@ -1,0 +1,1439 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0036)http://bbs.csdn.net/topics/390412274 -->
+<html class="csdn-bbs"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script async="" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/suggest"></script>
+    <script async="" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/analytics.js"></script><script id="allmobilize" charset="utf-8" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/allmobilize.min.js"></script><style type="text/css"></style>
+<meta http-equiv="Cache-Control" content="no-transform">
+<link rel="alternate" media="handheld" href="http://bbs.csdn.net/topics/390412274#">
+
+    
+    <title>MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区</title>
+
+    <link href="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/main-2b48a4310d11c3a55009510efa912fed.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/btn.css" media="screen" rel="stylesheet" type="text/css">
+    <script src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/application-99904a9de34bdfafccfcb75f0ffbe29d.js" type="text/javascript"></script>
+    <script src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/atsuggest.js" type="text/javascript"></script>
+    <meta content="authenticity_token" name="csrf-param">
+<meta content="0lSzOutaUhjsCuwbqpXbs3c2a/+f1ulseGPDQjX7fkY=" name="csrf-token">
+    <link href="http://c.csdnimg.cn/public/favicon.ico" rel="SHORTCUT ICON">
+<link rel="stylesheet" href="http://static.csdn.net/public/common/toolbar/css/index.css">
+
+      <link href="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/sh-2bfcf65754f6d04d58df6ed87a3b6faf.css" media="all" rel="stylesheet" type="text/css">
+  <script src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/sh-e7799bf9690a86571a685dd3015e559c.js" type="text/javascript"></script>
+  <script src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/login.js" type="text/javascript"></script>
+    <style>
+        #topic-detail-ad-ul{width:960px;float:left;font-size:1px;margin:0;padding:0}
+        #topic-detail-ad-l{float:left;}
+        #topic-detail-ad-r{float:right;}
+        #topic-detail-ad-ul li{list-style: none;}
+    </style>
+
+    <!--  js for ask-->
+      <script type="text/javascript">
+          window.bbsInfoflag = true;
+      </script>
+
+    <link href="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/ask_float_block.css" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/wmd.js"></script>
+
+    <script type="text/javascript" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/showdown.js"></script>
+
+    <script type="text/javascript" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/prettify.js"></script>
+
+    <script type="text/javascript" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/ask_float_block.js"></script>
+
+      <script type="text/javascript">
+          // 快速回复
+          $(document).ready(function () {
+          $("#com-quick-reply-bbs").bind("click", function(){
+              //_gaq.push(['_trackEvent','function', 'onclick', 'BBS_articles_youhuifu']);
+              $("#post_body").focus();
+              window.scrollTo(0, $(document).height());
+          });
+        });
+      </script>
+    <!--  js for ask  end-->
+  <link href="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/bdsstyle.css" rel="stylesheet" type="text/css"><script type="text/javascript" charset="utf-8" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/tracking.js"></script><script type="text/javascript" charset="utf-8" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/main.js"></script><link type="text/css" rel="stylesheet" href="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/style.css"><link rel="stylesheet" type="text/css" href="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/style(1).css"><script src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/logger.js"></script></head>
+  <body id="topics-show"><iframe frameborder="0" style="display: none;"></iframe><div id="bdshare_s" style="display: block;"><iframe id="bdsIfr" style="position:absolute;display:none;z-index:9999;" frameborder="0"></iframe><div id="bdshare_l" style="display: none;"><div id="bdshare_l_c"><h6>分享到</h6><ul><li><a href="http://bbs.csdn.net/topics/390412274#" class="bds_mshare mshare">一键分享</a></li><li><a href="http://bbs.csdn.net/topics/390412274#" class="bds_qzone qqkj">QQ空间</a></li><li><a href="http://bbs.csdn.net/topics/390412274#" class="bds_tsina xlwb">新浪微博</a></li><li><a href="http://bbs.csdn.net/topics/390412274#" class="bds_bdysc bdysc">百度云收藏</a></li><li><a href="http://bbs.csdn.net/topics/390412274#" class="bds_renren rrw">人人网</a></li><li><a href="http://bbs.csdn.net/topics/390412274#" class="bds_tqq txwb">腾讯微博</a></li><li><a href="http://bbs.csdn.net/topics/390412274#" class="bds_bdxc bdxc">百度相册</a></li><li><a href="http://bbs.csdn.net/topics/390412274#" class="bds_kaixin001 kxw">开心网</a></li><li><a href="http://bbs.csdn.net/topics/390412274#" class="bds_tqf txpy">腾讯朋友</a></li><li><a href="http://bbs.csdn.net/topics/390412274#" class="bds_tieba bdtb">百度贴吧</a></li><li><a href="http://bbs.csdn.net/topics/390412274#" class="bds_douban db">豆瓣网</a></li><li><a href="http://bbs.csdn.net/topics/390412274#" class="bds_tsohu shwb">搜狐微博</a></li><li><a href="http://bbs.csdn.net/topics/390412274#" class="bds_bdhome bdhome">百度新首页</a></li><li><a href="http://bbs.csdn.net/topics/390412274#" class="bds_sqq sqq">QQ好友</a></li><li><a href="http://bbs.csdn.net/topics/390412274#" class="bds_thx thx">和讯微博</a></li><li><a href="http://bbs.csdn.net/topics/390412274#" class="bds_more">更多...</a></li></ul><p><a href="http://bbs.csdn.net/topics/390412274#" class="goWebsite">百度分享</a></p></div></div></div>
+    <!-- <script type="text/javascript" src="http://c.csdnimg.cn/pubnav/js/pub_topnav_2011.js"></script> -->
+
+<!--全屏-->
+<script type="text/javascript" ads-src="http://csdnim.qtmojo.com/main/s?user=allyestest|allyestest|allyestest0410&amp;db=csdnim&amp;border=0&amp;local=yes&amp;js=ie" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/AllyesDeliver.min.js" charset="gbk" id="allyes_ins_fcfd8859" ads-outputs="0" ads-tid="1dc2d677d_0"></script><div id="1dc2d677d_0" style="padding:0;margin:0;border:0;"><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/s"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script></div>
+<!--全屏-->
+
+<!--浮标-->
+<script type="text/javascript" ads-src="http://csdnim.qtmojo.com/main/s?user=csdn|homepage|floating_1&amp;db=csdnim&amp;border=0&amp;local=yes&amp;js=ie" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/AllyesDeliver.min.js" charset="gbk" id="allyes_ins_34a4ee2d" ads-outputs="0" ads-tid="16043fb9c_0"></script><div id="16043fb9c_0" style="padding:0;margin:0;border:0;"><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/s(1)"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script></div>
+<!--浮标-->
+
+<script id="toolbar-tpl-scriptId" skin="black" prod="bbs" fixed="true" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/html.js" type="text/javascript"></script><div class="csdn-toolbar csdn-toolbar-skin-black ">        <div class="container row center-block ">          <div class="col-md-3 pull-left logo clearfix"><a href="http://www.csdn.net/?ref=toolbar" title="CSDN首页" target="_blank" class="icon"></a><a title="频道首页" href="http://bbs.csdn.net/?ref=toolbar_logo" class="img bbs-icon"></a></div>          <div class="pull-right login-wrap unlogin">            <ul class="btns">              <li class="loginlink"><a href="https://passport.csdn.net/account/login?ref=toolbar" target="_top">登录&nbsp;</a>|<a target="_top" href="http://passport.csdn.net/account/mobileregister?ref=toolbar&action=mobileRegister">&nbsp;注册</a></li>              <li class="search">                <div class="icon on-search-icon">                  <div class="wrap">                    <div class="curr-icon-wrap">                      <div class="curr-icon"></div>                    </div>                    <form action="http://so.csdn.net/search" method="get" target="_blank">                      <input type="hidden" value="toolbar" name="ref" accesskey="2">                      <div class="border">                        <input placeholder="搜索" type="text" value="" name="q" accesskey="2"><span class="icon-enter-sm"></span>                      </div>                    </form>                  </div>                </div>              </li>              <li class="favor">                <div class="icon on-favor-icon">                  <div class="wrap">                    <div class="curr-icon-wrap">                      <div class="curr-icon"></div>                    </div>                    <div style="display:none;" class="favor-success"><span class="msg">收藏成功</span>                      <div class="btns"><span class="btn btn-primary ok">确定</span></div>                    </div>                    <div style="display:none;" class="favor-failed"><span class="icon-danger-lg"></span><span class="msg">收藏失败，请重新收藏</span>                      <div class="btns"><span class="btn btn-primary ok">确定</span></div>                    </div>                    <form role="form" class="form-horizontal favor-form">                      <div class="form-group">                        <div class="clearfix">                          <label for="input-title" class="col-sm-2 control-label">标题</label>                          <div class="col-sm-10">                            <input id="inputTitle" type="text" placeholder="" class="title form-control">                          </div>                        </div>                        <div class="alert alert-danger"><strong></strong>标题不能为空</div>                      </div>                      <div class="form-group">                        <label for="input-url" class="col-sm-2 control-label">网址</label>                        <div class="col-sm-10">                          <input id="input-url" type="text" placeholder="" class="url form-control">                        </div>                      </div>                      <div class="form-group">                        <label for="input-tag" class="col-sm-2 tag control-label">标签</label>                        <div class="col-sm-10">                          <input id="input-tag" type="text" class="form-control tag">                        </div>                      </div>                      <div class="form-group">                        <label for="input-description" class="description col-sm-2 control-label">摘要</label>                        <div class="col-sm-10">                          <textarea id="input-description" class="form-control description"></textarea>                        </div>                      </div>                      <div class="form-group">                        <div class="col-sm-offset-2 col-sm-10 ft">                          <div class="col-sm-4 pull-left">                            <div class="checkbox">                              <label>                                <input type="checkbox" name="share" checked="checked" class="share">公开                              </label>                            </div>                          </div>                          <div class="col-sm-8 pull-right favor-btns">                            <button type="button" class="cancel btn btn-default">取消</button>                            <button type="submit" class="submit btn btn-primary">收藏</button>                          </div>                        </div>                      </div>                    </form>                  </div>                </div>              </li>              <li class="notify">                <div style="display:none" class="number"></div>                <div style="display:none" class="icon-hasnotes-sm"></div>                <div id="header_notice_num"></div>                <div class="icon on-notify-icon">                  <div class="wrap">                    <div class="curr-icon-wrap">                      <div class="curr-icon"></div>                    </div>                    <div id="note1" class="csdn_note">                      <div class="box"></div>                    <iframe src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/TopicDaRight.html" frameborder="0" allowtransparency="true" style="z-index:-1;position:absolute;top:0;left:0;width:100%;height:100%;background:transparent"></iframe></div>                  </div>                </div>              </li>              <li class="ugc">                <div class="icon on-ugc-icon">                  <div class="wrap clearfix">                    <div class="curr-icon-wrap">                      <div class="curr-icon"></div>                    </div>                    <dl>                      <dt><a href="http://geek.csdn.net/news/expert?ref=toolbar" target="_blank" class="p-news clearfix" style="display:none;"><em class="icon"></em><span>分享资讯</span></a></dt>                      <dt><a href="http://u.download.csdn.net/upload?ref=toolbar" target="_blank" class="p-doc clearfix"><em class="icon"></em><span>传PPT/文档</span></a></dt>                      <dt><a href="http://bbs.csdn.net/topics/new?ref=toolbar" target="_blank" class="p-ask clearfix"><em class="icon"></em><span>提问题</span></a></dt>                      <dt><a href="http://write.blog.csdn.net/postedit?ref=toolbar" target="_blank" class="p-blog clearfix"><em class="icon"></em><span>写博客</span></a></dt>                      <dt><a href="http://u.download.csdn.net/upload?ref=toolbar" target="_blank" class="p-src clearfix"><em class="icon"></em><span>传资源</span></a></dt>                      <dt><a href="https://code.csdn.net/projects/new?ref=toolbar" target="_blank" class="c-obj clearfix"><em class="icon"></em><span>创建项目</span></a></dt>                      <dt><a href="https://code.csdn.net/snippets/new?ref=toolbar" target="_blank" class="c-code clearfix"><em class="icon"></em><span>创建代码片</span></a></dt>                    </dl>                  </div>                </div>              </li>              <li class="profile">                <div class="icon on-profile-icon"><img src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/100x100.jpg" class="curr-icon-img">                  <div class="wrap clearfix">                    <div class="curr-icon-wrap">                      <div class="curr-icon"></div>                    </div>                    <div class="bd">                      <dl class="clearfix">                        <dt class="pull-left img"><a target="_blank" href="http://my.csdn.net/?ref=toolbar" class="avatar"><img src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/100x100.jpg"></a></dt>                        <dd class="info" style="border: none;"><a target="_blank" href="http://my.csdn.net/?ref=toolbar" class="nickname"></a><a class="set-nick" href="https://passport.csdn.net/account/profile">设置昵称<span class="write-icon"></span></a><span class="dec"><a class="fill-dec" href="http://my.csdn.net/" target="_blank">编辑自我介绍，让更多人了解你<span class="write-icon"></span></a></span></dd>                      </dl>                    </div>                    <div class="ft clearfix"><a target="_blank" href="http://my.csdn.net/my/account/changepwd?ref=toolbar" class="pull-left"><span class="icon-cog"></span>帐号设置</a><a href="https://passport.csdn.net/account/logout?ref=toolbar" target="_top" class="pull-left" style="margin-left:132px; width:18px; height:27px; white-space:nowrap; overflow:hidden;"><span class="icon-signout"></span><span class="out">退出</span></a></div>                  </div>                </div>              </li>              <li class="apps">                <div id="chasnew123" class="hasnew" style="display: none;"></div>                <div id="cappsarea123" class="icon on-apps-icon">                  <div class="wrap clearfix">                    <div class="curr-icon-wrap">                      <div class="curr-icon"></div>                    </div>                  <div class="detail">                    <dl>                      <dt>                        <h5>社区</h5>                      </dt>                      <dd> <a href="http://blog.csdn.net/?ref=toolbar" target="_blank">博客</a></dd>                      <dd> <a href="http://bbs.csdn.net/?ref=toolbar" target="_blank">论坛</a></dd>                      <dd> <a href="http://download.csdn.net/?ref=toolbar" target="_blank">下载</a></dd>                      <dd><a href="http://ask.csdn.net/?ref=toolbar" target="_blank">技术问答</a></dd>                      <dd><a href="http://geek.csdn.net/?ref=toolbar" target="_blank">极客头条</a></dd>                      <dd> <a href="http://hero.csdn.net/?ref=toolbar" target="_blank">英雄会</a></dd>                    </dl>                  </div>                  <div class="detail">                    <dl>                      <dt>                        <h5>服务</h5>                      </dt>                      <dd> <a href="http://job.csdn.net/?ref=toolbar" target="_blank">JOB<img src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/new.gif" style="display: none; margin-top: -26px; width: 23px;"></a></dd>                      <dd> <a href="http://edu.csdn.net/?ref=toolbar" target="_blank">学院<img src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/new.gif" style="display: none; margin-top: -26px; width: 23px;"></a></dd>                      <dd> <a href="https://code.csdn.net/?ref=toolbar" target="_blank">CODE</a></dd>                      <dd> <a href="http://huiyi.csdn.net/?ref=toolbar" target="_blank">活动</a></dd>                      <dd> <a href="http://www.csto.com/?ref=toolbar" target="_blank">CSTO</a></dd>                      <dd> <a href="http://mall.csdn.net/?ref=toolbar" target="_blank">C币兑换<img src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/new.gif" style="display: none; margin-top: -26px; width: 23px;"></a></dd>                    </dl>                  </div>                  <div class="detail last">                    <dl>                      <dt>                        <h5>俱乐部</h5>                      </dt>                      <dd> <a href="http://cto.csdn.net/?ref=toolbar" target="_blank">CTO俱乐部</a></dd>                      <dd> <a href="http://student.csdn.net/?ref=toolbar" target="_blank">高校俱乐部</a></dd>                    </dl>                  </div>                </div>              </div>            </li>            </ul>          </div>        </div>    </div>
+      <!-- 统计代码 -->
+<script type="text/javascript">
+  var protocol = window.location.protocol;
+  document.write('<script type="text/javascript" src="' +protocol+ '//csdnimg.cn/pubfooter/js/repoAddr2.js?v=' + Math.random() + '"></'+'script>');
+</script><script type="text/javascript" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/repoAddr2.js"></script>
+
+
+    <div class="news-nav">
+  <div class="container">
+    <div class="nav-bar">
+      <a href="http://bbs.csdn.net/home" class="">首页</a>
+      <span class="dropdown">
+  <a href="http://bbs.csdn.net/topics/390412274#">精选版块</a>
+  <span class="caret"></span>
+  <div class="dropdown-menu">
+    <dl>
+      <dt><a href="http://bbs.csdn.net/forums/Mobile">移动开发</a></dt>
+      <dd>
+        <a href="http://bbs.csdn.net/forums/ios">iOS</a>
+        <a href="http://bbs.csdn.net/forums/Android">Android</a>
+        <a href="http://bbs.csdn.net/forums/Qt">Qt</a>
+        <a href="http://bbs.csdn.net/forums/WindowsMobile">WP</a>
+      </dd>
+    </dl>
+    <dl>
+      <dt><a href="http://bbs.csdn.net/forums/CloudComputing">云计算</a></dt>
+      <dd>
+        <a href="http://bbs.csdn.net/forums/AWS">IaaS</a>
+        <a href="http://bbs.csdn.net/forums/CloudFoundry">Pass/SaaS</a>
+        <a href="http://bbs.csdn.net/forums/hadoop">分布式计算/Hadoop</a>
+      </dd>
+    </dl>
+    <dl>
+      <dt><a href="http://bbs.csdn.net/forums/Java">Java技术</a></dt>
+      <dd>
+        <a href="http://bbs.csdn.net/forums/J2SE">Java SE</a>
+        <a href="http://bbs.csdn.net/forums/Java_WebDevelop">Java Web 开发</a>
+        <a href="http://bbs.csdn.net/forums/J2EE">Java EE</a>
+        <a href="http://bbs.csdn.net/forums/JavaOther">Java其他相关</a>
+      </dd>
+    </dl>
+    <dl>
+      <dt><a href="http://bbs.csdn.net/forums/DotNET">.NET技术</a></dt>
+      <dd>
+        <a href="http://bbs.csdn.net/forums/DotNETFramework">.NET Framework</a>
+        <a href="http://bbs.csdn.net/forums/CSharp">C#</a>
+        <a href="http://bbs.csdn.net/forums/DotNETAnalysisAndDesign">.NET分析与设计</a>
+        <a href="http://bbs.csdn.net/forums/ASPDotNET">ASP .NET</a>
+        <a href="http://bbs.csdn.net/forums/VBDotNET">VB .NET</a>
+      </dd>
+    </dl>
+    <dl>
+      <dt><a href="http://bbs.csdn.net/forums/WebDevelop">Web开发</a></dt>
+      <dd>
+        <a href="http://bbs.csdn.net/forums/PHP">PHP</a>
+        <a href="http://bbs.csdn.net/forums/JavaScript">JavaScript</a>
+        <a href="http://bbs.csdn.net/forums/ASP">ASP</a>
+        <a href="http://bbs.csdn.net/forums/HTMLCSS">HTML(CSS)</a>
+        <a href="http://bbs.csdn.net/forums/HTML5">HTML5</a>
+        <a href="http://bbs.csdn.net/forums/Apache">Apache</a>
+      </dd>
+    </dl>
+    <dl>
+      <dt><a href="http://bbs.csdn.net/topics/390412274#">开发语言/框架</a></dt>
+      <dd>
+        <a href="http://bbs.csdn.net/forums/Delphi">Delphi</a>
+        <a href="http://bbs.csdn.net/forums/VC">VC/MFC</a>
+        <a href="http://bbs.csdn.net/forums/VB">VB</a>
+        <a href="http://bbs.csdn.net/forums/Cpp">C/C++</a>
+        <a href="http://bbs.csdn.net/forums/BCB">C++ Builder</a>
+        <a href="http://bbs.csdn.net/forums/OtherLanguage">其他开发语言</a>
+      </dd>
+    </dl>
+    <dl>
+      <dt><a href="http://bbs.csdn.net/topics/390412274#">数据库开发</a></dt>
+      <dd>
+        <a href="http://bbs.csdn.net/forums/MSSQL">MS-SQL Server</a>
+        <a href="http://bbs.csdn.net/forums/Oracle">Oracle</a>
+        <a href="http://bbs.csdn.net/forums/PowerBuilder">PowerBuilder</a>
+        <a href="http://bbs.csdn.net/forums/Informatica">Informatica</a>
+        <a href="http://bbs.csdn.net/forums/OtherDatabase">其他数据库开发</a>
+      </dd>
+    </dl>
+    <dl>
+      <dt><a href="http://bbs.csdn.net/forums/Embedded">硬件/嵌入式开发</a></dt>
+      <dd>
+        <a href="http://bbs.csdn.net/forums/WinCE">嵌入开发(WinCE)</a>
+        <a href="http://bbs.csdn.net/forums/Embedded_driver">驱动开发/核心开发</a>
+        <a href="http://bbs.csdn.net/forums/Embedded_hardware">硬件设计</a>
+        <a href="http://bbs.csdn.net/forums/Embedded_SCM">单片机/工控</a>
+        <a href="http://bbs.csdn.net/forums/ASM">汇编语言</a>
+        <a href="http://bbs.csdn.net/forums/VxWorks">VxWorks开发</a>
+      </dd>
+    </dl>
+    <dl>
+      <dt><a href="http://bbs.csdn.net/forums/Linux">Linux/Unix社区</a></dt>
+      <dd>
+        <a href="http://bbs.csdn.net/forums/Linux_System">系统维护与使用区</a>
+        <a href="http://bbs.csdn.net/forums/Linux_Development">应用程序开发区</a>
+        <a href="http://bbs.csdn.net/forums/Linux_Kernel">内核源代码研究区</a>
+        <a href="http://bbs.csdn.net/forums/Linux_Driver">驱动程序开发区</a>
+        <a href="http://bbs.csdn.net/forums/Linux_Hardware">CPU和硬件区</a>
+      </dd>
+    </dl>
+  </div>
+</span>
+
+      <a href="http://bbs.csdn.net/help" class="">论坛帮助</a>
+      <a href="http://bbs.csdn.net/rank" class="">论坛牛人</a>
+      <a href="http://bbs.csdn.net/map" class="">论坛地图</a>
+      <a href="http://bbs.csdn.net/ask" class="">专家问答</a>
+    </div>
+  </div>
+</div>
+    <div class="wraper">
+        <!-- 页顶通栏 -->
+  <!--<iframe id="Topic_Top" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" width="100%" src="/sda/TopicPageTop.htm"></iframe>-->
+    <div id="Topic_Top">
+      <!--<style type="text/css">-->
+          <!--/*body,ul{width:960px;float:left;font-size:1px;margin:0;padding:0}*/-->
+          <!--/*ul li.l{float:left;}*/-->
+          <!--/*ul li.r{float:right;}*/-->
+          <!--/*li{list-style: none;}*/-->
+      <!--</style>-->
+      <!--<body>-->
+      <ul id="topic-detail-ad-ul">
+        <li class="l" id="topic-detail-ad-l">
+          <script type="text/javascript" ads-src="http://csdnim.qtmojo.com/main/s?user=csdn|bbs|topics_banner1&amp;db=csdnim&amp;border=0&amp;local=yes&amp;js=ie" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/AllyesDeliver.min.js" charset="gbk" id="allyes_ins_6d2cf8b7" ads-outputs="0" ads-tid="a0e2d624_0"></script><div id="a0e2d624_0" style="padding:0;margin:0;border:0;"><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/s(2)"></script><script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 论坛频道帖子页置顶左Banner -->
+<ins class="adsbygoogle" style="display:inline-block;width:475px;height:60px" data-ad-client="ca-pub-1076724771190722" data-ad-slot="4143634246"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script></div>
+        </li>
+        <li class="r" id="topic-detail-ad-r">
+          <script type="text/javascript" ads-src="http://csdnim.qtmojo.com/main/s?user=csdn|bbs|topics_banner2&amp;db=csdnim&amp;border=0&amp;local=yes&amp;js=ie" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/AllyesDeliver.min.js" charset="gbk" id="allyes_ins_157c2793d" ads-outputs="0" ads-tid="d4fd46a3_0"></script><div id="d4fd46a3_0" style="padding:0;margin:0;border:0;"><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/s(3)"></script><script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 论坛频道帖子页置顶右Banner -->
+<ins class="adsbygoogle" style="display:inline-block;width:475px;height:60px" data-ad-client="ca-pub-1076724771190722" data-ad-slot="5620367445"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script></div>
+        </li>
+      </ul>
+      <!--</body>-->
+    </div>
+
+      <!--[if IE]>
+<style type="text/css" media="screen">
+  .control_area .control .drop_menu{border:3px solid #ccc \9; _*border:3px solid #ccc;}
+</style>
+<![endif]-->
+
+<!-- 页顶Button (D3) -->
+<iframe id="frm_tt1" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" width="100%" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/TopicBodyTop.html"></iframe>
+<script type="text/javascript">
+  setTimeout(function () { document.getElementById("frm_tt1").src = "/sda/TopicBodyTop.htm?v="+new Date().getTime(); }, 5000);
+
+  $(function(){
+      //获取要定位元素距离浏览器顶部的距离
+      var navH = $(".detail_title_fixed").offset().top;
+      $(".detail_title_fixed").hide();
+
+      var show_detail_title_fixed = true;
+      //滚动条事件
+      $(window).scroll(function(){
+
+          //获取滚动条的滑动距离
+          var scroH = $(this).scrollTop();
+
+          //滚动条的滑动距离大于等于定位元素距离浏览器顶部的距离，就固定，反之就不固定
+          if(show_detail_title_fixed){
+              if(scroH>=navH){
+                  $(".detail_title_fixed").css({"position":"fixed","top":"0","border":"1px #198cc5 solid","z-index":"99999"});
+                  $(".detail_title_fixed").show();
+              }else if(scroH<navH){
+                  $(".detail_title_fixed").css({"position":"static"});
+                  $(".detail_title_fixed").hide();
+              }
+          }
+      });
+
+      $("#close_detail_title_fixed").click(function(){
+          show_detail_title_fixed = false;
+          $(".detail_title_fixed").hide();
+      });
+
+      $("#com-back-home").click(function(){
+        window.location.href="/";
+      });
+
+      $("#com-back-channel").click(function(){
+          window.location.href="/forums/hadoop";
+      });
+  })
+</script>
+
+<div class="bread_nav">
+  <a href="http://www.csdn.net/" target="_blank">CSDN</a> <em>&gt;</em>
+  <a href="http://bbs.csdn.net/" target="_blank">CSDN论坛</a> <em>&gt;</em>
+    <a href="http://bbs.csdn.net/forums/HPDevelopment" target="_blank">高性能开发</a> <em>&gt;</em>
+  <a href="http://bbs.csdn.net/forums/hadoop" target="_blank">分布式计算/Hadoop</a>
+</div>
+
+<div class="flash_messages">
+</div>
+
+<div class="control_area top">
+  <form name="form" id="form">
+    
+    <span class="back_to_forum_list"><a href="http://bbs.csdn.net/forums/hadoop">返回列表</a></span>
+    <div class="control">
+      <ul>
+        <li class="drop_menu_wrap drop_menu_down">
+          <a href="http://bbs.csdn.net/topics/390412274#" class="drop_toggle btn_1 " rel="nofollow">
+            <span>
+              <img src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/ico_set.gif" alt="">管理菜单<img src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/arrow_down.gif" alt="">
+            </span>
+          </a>
+          <ul class="drop_menu" style="display: none; top:26px;">
+              <li><a href="http://bbs.csdn.net/topics/390412274/top" class="fancybox" rel="nofollow">置顶</a></li>
+
+  <li><a href="http://bbs.csdn.net/topics/390412274/recommend" data-confirm="您确定要推荐该帖吗？帖子被推荐后将奖励发帖用 户88个可用分和3个C币!" data-method="put" rel="nofollow">推荐</a></li>
+
+  <li><a href="http://bbs.csdn.net/topics/390412274/lock" class="fancybox" rel="nofollow">锁定</a></li>
+
+<li><a href="http://bbs.csdn.net/topics/390412274/move" class="fancybox" rel="nofollow">移动</a></li>
+<li><a href="http://bbs.csdn.net/topics/390412274/edit" class="fancybox" rel="nofollow">编辑</a></li>
+<li><a href="http://bbs.csdn.net/topics/390412274/destroy_edit" class="fancybox" rel="nofollow">删除</a></li>
+<li><a href="http://bbs.csdn.net/topics/390412274/add_point" class="fancybox" rel="nofollow">帖子加分</a></li>
+  <li><a href="http://bbs.csdn.net/topics/390412274/highlight" class="fancybox" rel="nofollow">帖子高亮</a></li>
+
+          </ul>
+        </li>
+        <li>
+          <a href="http://bbs.csdn.net/topics/390412274/close" class="btn_1 close_topic" rel="nofollow">
+            <span><img src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/ico_over.gif" alt="">结帖</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://bbs.csdn.net/topics/new?forum_id=hadoop" class="btn_1 create_topic" rel="nofollow">
+            <span><img src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/ico_publish.gif" alt="">发帖</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://bbs.csdn.net/topics/390412274#new_post" class="btn_1 reply_topic" rel="nofollow">
+            <span><img src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/ico_return.gif" alt="">回复</span>
+          </a>
+        </li>
+          <li>
+            <a href="http://bbs.csdn.net/topics/390412274/attetion" class="btn_1 reply_topic" rel="nofollow">
+              <span><img src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/ico_attention_topic.png" title="关注">关注</span>
+            </a>
+          </li>
+      </ul>
+    </div>
+  </form>
+</div>
+
+<div class="h-entry">
+  <a class="p-author" href="http://bbs.csdn.net/topics/390412274#">PigRunO</a>
+</div>
+
+
+<div class="detail_tbox">
+    <div class="detail_title_fixed" style="display: none; position: static; top: 0px; border: 1px solid rgb(25, 140, 197); z-index: 99999;">
+      <h1>
+            <span class="title text_overflow">MapReduce参数详解</span>
+        <span>
+          [问题点数：20分，无满意结帖，结帖人PigRunO]
+        </span>
+      </h1>
+
+      <div class="fixed-r">
+        <a href="http://bbs.csdn.net/topics/390412274#new_post" class="bbs-btn-blue26">快速回复</a>
+            <a href="http://bbs.csdn.net/topics/390412274?list=lz" class="bbs-btn-blue26">只显示楼主</a>
+            <a href="http://bbs.csdn.net/topics/390412274/attetion" class="bbs-btn-blue26">关注帖子</a>
+        <a href="javascript:void(0);" id="close_detail_title_fixed" class="bbs-btn-close"> </a>
+      </div>
+    </div>
+    <div class="detail_title">
+      <h1>
+          <span class="title text_overflow">MapReduce参数详解</span>
+        <span>
+          [问题点数：20分，无满意结帖，结帖人PigRunO]
+        </span>
+      </h1>
+      <div class="fr">
+        <select name="filter_posts">
+          <option value="default">不显示删除回复</option>
+          <option value="all">显示所有回复</option>
+          <option value="star">显示星级回复</option>
+          <option value="pointed">显示得分回复</option>
+          <option value="lz">只显示楼主</option>
+        </select>
+        <a href="http://my.csdn.net/my/favorite/miniadd?u=http://bbs.csdn.net/topics/390412274&t=MapReduce%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3" id="fav" class="fav" rel="nofollow"><img src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/nolines_plus.gif" alt="">收藏</a>
+      </div>
+    </div>
+</div>
+<div class="detailed">
+    
+
+<table border="0" cellspacing="0" cellpadding="0" id="post-394092873" class="post topic " data-post-id="394092873" data-is-topic-locked="false">
+  <colgroup><col width="180"><col></colgroup>
+  <tbody><tr>
+      <td rowspan="2" valign="top" class="wirter">
+                <dl class="user_info ">
+          <dt class="user_head" data-username="PigRunO">
+            <a href="http://my.csdn.net/PigRunO" rel="nofollow" target="_blank"><img alt="PigRunO" class="avatar" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/1_pigruno.jpg"></a>
+          <div class="user_material" id="user_meterial_1442037224105" style="display: none;">
+  <div class="user_material_bg">
+    <div class="placeholder"></div>
+    <div class="arrow-left"></div>
+    <dl>
+      <dt><a href="http://my.csdn.net/PigRunO" target="_blank"><img src="http://avatar.csdn.net/0/D/7/2_pigruno.jpg" class="avatar_75"></a></dt>
+      <dd>账号:<a href="http://my.csdn.net/PigRunO" target="_blank">PigRunO</a></dd>
+      <dd class="nickname">昵称:<span class="name2nick">又丑又萌的八戒</span></dd>
+      <dd>
+      <a class="button add follow_btn" data-username="PigRunO" href="javascript:void(0);">关注</a>
+      <a href="http://blog.csdn.net/PigRunO" class="button" target="_blank">博客</a><a href="http://my.csdn.net/PigRunO" class="button" target="_blank">空间</a> </dd>
+    </dl>
+      <ol>
+        最新帖子:
+          <li><a href="http://bbs.csdn.net/topics/391813596" target="_blank" title="请问java程序员如何从中级晋升到高级，以及成为架构师需要具备的技术？">请问java程序员如何从中级晋升到...</a></li>
+          <li><a href="http://bbs.csdn.net/topics/391491938" target="_blank" title="ArrayList扩容似乎不再是1.5x+1了，1.8似乎就是1.5x了">ArrayList扩容似乎不再是1.5x+1...</a></li>
+          <li><a href="http://bbs.csdn.net/topics/391035139" target="_blank" title="求教一个springMVC">求教一个springMVC</a></li>
+      </ol>
+      <a href="http://bbs.csdn.net/users/PigRunO/topics" class="more" target="_blank">更多 &gt;&gt;</a>
+  </div>
+</div></dt>
+
+            <dd id="19777842_bbs-btn-close-attention" class="bbs-user-att" style="display:none;">
+              <form action="http://bbs.csdn.net/users/19777842/cancel_attention" class="button_to" data-remote="true" method="get"><div><input class="bbs-btn-blue25 bbs-btn-close-attention" type="submit" value="取消关注"></div></form>
+            </dd>
+            <dd id="19777842_bbs-btn-attention" class="bbs-user-att">
+              <form action="http://bbs.csdn.net/users/19777842/attention" class="button_to" data-remote="true" method="get"><div><input class="bbs-btn-blue25 bbs-btn-attention" type="submit" value="关注"></div></form>
+            </dd>
+
+          <dd class="username">
+            <a href="http://my.csdn.net/PigRunO" rel="nofollow" target="_blank" title="PigRunO">PigRunO</a>
+            
+          </dd>
+          <dd class="nickname">
+            <span class="name2nick">又丑又萌的八戒</span>
+          </dd>
+
+          <dd>
+            本版等级：<img alt="T1" class="topic_show_user_level" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/t1.png">
+            <div class="topic_show_posts">
+              <div class="smallTittle">
+                <div class="JianJiao" style="left: 40%; top: -8px; position: absolute; width: 0; height: 0;border-left: 10px solid transparent;border-right: 10px solid transparent; border-bottom: 8px solid #ffffff;"></div>
+                本版专家分：15
+              </div>
+            </div>
+          </dd>
+
+          <dd class="close_rate" title="用户结帖率：93.33%
+总发帖：15
+正常结帖：14
+未结帖：1">结帖率：93.33%</dd>
+
+          <dd class="showTittleDD">
+
+          </dd>
+
+        </dl>
+
+      </td>
+      <td valign="top" class="post_info topic" data-username="PigRunO" data-floor="">
+                <div class="data">
+            <strong class="fr">
+              楼主
+            </strong>
+          <span class="time">
+              发表于：
+            2013-04-02 09:38:13
+          </span>
+                  <!--<span class="time" style="font-size: 12px">-->
+                    <!--<img src="/assets/phone.png"/>&nbsp;来自移动客户端-->
+                  <!--</span>-->
+        </div>
+        <div class="post_body">
+
+              <div class="tag">
+                  <span><a href="http://www.csdn.net/tag/mapreduce" target="_blank">mapreduce</a></span>
+                  <span><a href="http://www.csdn.net/tag/hadoop" target="_blank">hadoop</a></span>
+                  <span><a href="http://www.csdn.net/tag/map%E5%8F%82%E6%95%B0%C2%A0%C2%A0reduce%E5%8F%82%E6%95%B0" target="_blank">map参数&nbsp;&nbsp;reduce参数</a></span>
+              </div>
+
+            1、Map-Reduce的逻辑过程<br>
+<br>
+假设我们需要处理一批有关天气的数据，其格式如下：<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;按照ASCII码存储，每行一条记录<br>
+&nbsp;&nbsp;&nbsp;&nbsp;每一行字符从0开始计数，第15个到第18个字符为年<br>
+&nbsp;&nbsp;&nbsp;&nbsp;第25个到第29个字符为温度，其中第25位是符号+/-<br>
+<br>
+0067011990999991950051507+0000+<br>
+<br>
+0043011990999991950051512+0022+<br>
+<br>
+0043011990999991950051518-0011+<br>
+<br>
+0043012650999991949032412+0111+<br>
+<br>
+0043012650999991949032418+0078+<br>
+<br>
+0067011990999991937051507+0001+<br>
+<br>
+0043011990999991937051512-0002+<br>
+<br>
+0043011990999991945051518+0001+<br>
+<br>
+0043012650999991945032412+0002+<br>
+<br>
+0043012650999991945032418+0078+<br>
+<br>
+现在需要统计出每年的最高温度。<br>
+<br>
+Map-Reduce主要包括两个步骤：Map和Reduce<br>
+<br>
+每一步都有key-value对作为输入和输出：<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;map阶段的key-value对的格式是由输入的格式所决定的，如果是默认的TextInputFormat，则每行作为一个记录进程处理，其中key为此行的开头相对于文件的起始位置，value就是此行的字符文本<br>
+&nbsp;&nbsp;&nbsp;&nbsp;map阶段的输出的key-value对的格式必须同reduce阶段的输入key-value对的格式相对应<br>
+<br>
+对于上面的例子，在map过程，输入的key-value对如下：<br>
+<br>
+(0,&nbsp;0067011990999991950051507+0000+)<br>
+<br>
+(33,&nbsp;0043011990999991950051512+0022+)<br>
+<br>
+(66,&nbsp;0043011990999991950051518-0011+)<br>
+<br>
+(99,&nbsp;0043012650999991949032412+0111+)<br>
+<br>
+(132,&nbsp;0043012650999991949032418+0078+)<br>
+<br>
+(165,&nbsp;0067011990999991937051507+0001+)<br>
+<br>
+(198,&nbsp;0043011990999991937051512-0002+)<br>
+<br>
+(231,&nbsp;0043011990999991945051518+0001+)<br>
+<br>
+(264,&nbsp;0043012650999991945032412+0002+)<br>
+<br>
+(297,&nbsp;0043012650999991945032418+0078+)<br>
+<br>
+在map过程中，通过对每一行字符串的解析，得到年-温度的key-value对作为输出：<br>
+<br>
+(1950,&nbsp;0)<br>
+<br>
+(1950,&nbsp;22)<br>
+<br>
+(1950,&nbsp;-11)<br>
+<br>
+(1949,&nbsp;111)<br>
+<br>
+(1949,&nbsp;78)<br>
+<br>
+(1937,&nbsp;1)<br>
+<br>
+(1937,&nbsp;-2)<br>
+<br>
+(1945,&nbsp;1)<br>
+<br>
+(1945,&nbsp;2)<br>
+<br>
+(1945,&nbsp;78)<br>
+<br>
+在reduce过程，将map过程中的输出，按照相同的key将value放到同一个列表中作为reduce的输入<br>
+<br>
+(1950,&nbsp;[0,&nbsp;22,&nbsp;–11])<br>
+<br>
+(1949,&nbsp;[111,&nbsp;78])<br>
+<br>
+(1937,&nbsp;[1,&nbsp;-2])<br>
+<br>
+(1945,&nbsp;[1,&nbsp;2,&nbsp;78])<br>
+<br>
+在reduce过程中，在列表中选择出最大的温度，将年-最大温度的key-value作为输出：<br>
+<br>
+(1950,&nbsp;22)<br>
+<br>
+(1949,&nbsp;111)<br>
+<br>
+(1937,&nbsp;1)<br>
+<br>
+(1945,&nbsp;78)<br>
+<br>
+其逻辑过程可用如下图表示：<br>
+<br>
+<img src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/1364866649_1353.png" alt="" class="image_border"><br>
+2、编写Map-Reduce程序<br>
+<br>
+编写Map-Reduce程序，一般需要实现两个函数：mapper中的map函数和reducer中的reduce函数。<br>
+<br>
+一般遵循以下格式：<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;map:&nbsp;(K1,&nbsp;V1)&nbsp;&nbsp;-&gt;&nbsp;&nbsp;list(K2,&nbsp;V2)<br>
+<br>
+public&nbsp;interface&nbsp;Mapper&lt;K1,&nbsp;V1,&nbsp;K2,&nbsp;V2&gt;&nbsp;extends&nbsp;JobConfigurable,&nbsp;Closeable&nbsp;{<br>
+<br>
+&nbsp;&nbsp;void&nbsp;map(K1&nbsp;key,&nbsp;V1&nbsp;value,&nbsp;OutputCollector&lt;K2,&nbsp;V2&gt;&nbsp;output,&nbsp;Reporter&nbsp;reporter)<br>
+<br>
+&nbsp;&nbsp;throws&nbsp;IOException;<br>
+<br>
+}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;reduce:&nbsp;(K2,&nbsp;list(V))&nbsp;&nbsp;-&gt;&nbsp;&nbsp;list(K3,&nbsp;V3)&nbsp;&nbsp;<br>
+<br>
+public&nbsp;interface&nbsp;Reducer&lt;K2,&nbsp;V2,&nbsp;K3,&nbsp;V3&gt;&nbsp;extends&nbsp;JobConfigurable,&nbsp;Closeable&nbsp;{<br>
+<br>
+&nbsp;&nbsp;void&nbsp;reduce(K2&nbsp;key,&nbsp;Iterator&lt;V2&gt;&nbsp;values,<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OutputCollector&lt;K3,&nbsp;V3&gt;&nbsp;output,&nbsp;Reporter&nbsp;reporter)<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;throws&nbsp;IOException;<br>
+<br>
+}<br>
+<br>
+&nbsp;<br>
+<br>
+对于上面的例子，则实现的mapper如下：<br>
+<br>
+public&nbsp;class&nbsp;MaxTemperatureMapper&nbsp;extends&nbsp;MapReduceBase&nbsp;implements&nbsp;Mapper&lt;LongWritable,&nbsp;Text,&nbsp;Text,&nbsp;IntWritable&gt;&nbsp;{<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;@Override<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;map(LongWritable&nbsp;key,&nbsp;Text&nbsp;value,&nbsp;OutputCollector&lt;Text,&nbsp;IntWritable&gt;&nbsp;output,&nbsp;Reporter&nbsp;reporter)&nbsp;throws&nbsp;IOException&nbsp;{<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;line&nbsp;=&nbsp;value.toString();<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;year&nbsp;=&nbsp;line.substring(15,&nbsp;19);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;airTemperature;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(line.charAt(25)&nbsp;==&nbsp;'+')&nbsp;{<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;airTemperature&nbsp;=&nbsp;Integer.parseInt(line.substring(26,&nbsp;30));<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;airTemperature&nbsp;=&nbsp;Integer.parseInt(line.substring(25,&nbsp;30));<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output.collect(new&nbsp;Text(year),&nbsp;new&nbsp;IntWritable(airTemperature));<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+}<br>
+<br>
+实现的reducer如下：<br>
+<br>
+public&nbsp;class&nbsp;MaxTemperatureReducer&nbsp;extends&nbsp;MapReduceBase&nbsp;implements&nbsp;Reducer&lt;Text,&nbsp;IntWritable,&nbsp;Text,&nbsp;IntWritable&gt;&nbsp;{<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;reduce(Text&nbsp;key,&nbsp;Iterator&lt;IntWritable&gt;&nbsp;values,&nbsp;OutputCollector&lt;Text,&nbsp;IntWritable&gt;&nbsp;output,&nbsp;Reporter&nbsp;reporter)&nbsp;throws&nbsp;IOException&nbsp;{<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;maxValue&nbsp;=&nbsp;Integer.MIN_VALUE;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(values.hasNext())&nbsp;{<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maxValue&nbsp;=&nbsp;Math.max(maxValue,&nbsp;values.next().get());<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output.collect(key,&nbsp;new&nbsp;IntWritable(maxValue));<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+}<br>
+<br>
+&nbsp;<br>
+<br>
+欲运行上面实现的Mapper和Reduce，则需要生成一个Map-Reduce得任务(Job)，其基本包括以下三部分：<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;输入的数据，也即需要处理的数据<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Map-Reduce程序，也即上面实现的Mapper和Reducer<br>
+&nbsp;&nbsp;&nbsp;&nbsp;此任务的配置项JobConf<br>
+<br>
+欲配置JobConf，需要大致了解Hadoop运行job的基本原理：<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Hadoop将Job分成task进行处理，共两种task：map&nbsp;task和reduce&nbsp;task<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Hadoop有两类的节点控制job的运行：JobTracker和TaskTracker<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JobTracker协调整个job的运行，将task分配到不同的TaskTracker上<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TaskTracker负责运行task，并将结果返回给JobTracker<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Hadoop将输入数据分成固定大小的块，我们称之input&nbsp;split<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Hadoop为每一个input&nbsp;split创建一个task，在此task中依次处理此split中的一个个记录(record)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Hadoop会尽量让输入数据块所在的DataNode和task所执行的DataNode(每个DataNode上都有一个TaskTracker)为同一个，可以提高运行效率，所以input&nbsp;split的大小也一般是HDFS的block的大小。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Reduce&nbsp;task的输入一般为Map&nbsp;Task的输出，Reduce&nbsp;Task的输出为整个job的输出，保存在HDFS上。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;在reduce中，相同key的所有的记录一定会到同一个TaskTracker上面运行，然而不同的key可以在不同的TaskTracker上面运行，我们称之为partition<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;partition的规则为：(K2,&nbsp;V2)&nbsp;–&gt;&nbsp;Integer，&nbsp;也即根据K2，生成一个partition的id，具有相同id的K2则进入同一个partition，被同一个TaskTracker上被同一个Reducer进行处理。<br>
+<br>
+public&nbsp;interface&nbsp;Partitioner&lt;K2,&nbsp;V2&gt;&nbsp;extends&nbsp;JobConfigurable&nbsp;{<br>
+<br>
+&nbsp;&nbsp;int&nbsp;getPartition(K2&nbsp;key,&nbsp;V2&nbsp;value,&nbsp;int&nbsp;numPartitions);<br>
+<br>
+}<br>
+<br>
+下图大概描述了Map-Reduce的Job运行的基本原理：<br>
+<br>
+image<br>
+<br>
+&nbsp;<br>
+<br>
+下面我们讨论JobConf，其有很多的项可以进行配置：<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;setInputFormat：设置map的输入格式，默认为TextInputFormat，key为LongWritable,&nbsp;value为Text<br>
+&nbsp;&nbsp;&nbsp;&nbsp;setNumMapTasks：设置map任务的个数，此设置通常不起作用，map任务的个数取决于输入的数据所能分成的input&nbsp;split的个数<br>
+&nbsp;&nbsp;&nbsp;&nbsp;setMapperClass：设置Mapper，默认为IdentityMapper<br>
+&nbsp;&nbsp;&nbsp;&nbsp;setMapRunnerClass：设置MapRunner,&nbsp;map&nbsp;task是由MapRunner运行的，默认为MapRunnable，其功能为读取input&nbsp;split的一个个record，依次调用Mapper的map函数<br>
+&nbsp;&nbsp;&nbsp;&nbsp;setMapOutputKeyClass和setMapOutputValueClass：设置Mapper的输出的key-value对的格式<br>
+&nbsp;&nbsp;&nbsp;&nbsp;setOutputKeyClass和setOutputValueClass：设置Reducer的输出的key-value对的格式<br>
+&nbsp;&nbsp;&nbsp;&nbsp;setPartitionerClass和setNumReduceTasks：设置Partitioner，默认为HashPartitioner，其根据key的hash值来决定进入哪个partition，每个partition被一个reduce&nbsp;task处理，所以partition的个数等于reduce&nbsp;task的个数<br>
+&nbsp;&nbsp;&nbsp;&nbsp;setReducerClass：设置Reducer，默认为IdentityReducer<br>
+&nbsp;&nbsp;&nbsp;&nbsp;setOutputFormat：设置任务的输出格式，默认为TextOutputFormat<br>
+&nbsp;&nbsp;&nbsp;&nbsp;FileInputFormat.addInputPath：设置输入文件的路径，可以使一个文件，一个路径，一个通配符。可以被调用多次添加多个路径<br>
+&nbsp;&nbsp;&nbsp;&nbsp;FileOutputFormat.setOutputPath：设置输出文件的路径，在job运行前此路径不应该存在<br>
+<br>
+当然不用所有的都设置，由上面的例子，可以编写Map-Reduce程序如下：<br>
+<br>
+public&nbsp;class&nbsp;MaxTemperature&nbsp;{<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;void&nbsp;main(String[]&nbsp;args)&nbsp;throws&nbsp;IOException&nbsp;{<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(args.length&nbsp;!=&nbsp;2)&nbsp;{<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.err.println("Usage:&nbsp;MaxTemperature&nbsp;&lt;input&nbsp;path&gt;&nbsp;&lt;output&nbsp;path&gt;");<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.exit(-1);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JobConf&nbsp;conf&nbsp;=&nbsp;new&nbsp;JobConf(MaxTemperature.class);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;conf.setJobName("Max&nbsp;temperature");<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileInputFormat.addInputPath(conf,&nbsp;new&nbsp;Path(args[0]));<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileOutputFormat.setOutputPath(conf,&nbsp;new&nbsp;Path(args[1]));<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;conf.setMapperClass(MaxTemperatureMapper.class);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;conf.setReducerClass(MaxTemperatureReducer.class);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;conf.setOutputKeyClass(Text.class);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;conf.setOutputValueClass(IntWritable.class);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JobClient.runJob(conf);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+}<br>
+3、Map-Reduce数据流(data&nbsp;flow)<br>
+<br>
+Map-Reduce的处理过程主要涉及以下四个部分：<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;客户端Client：用于提交Map-reduce任务job<br>
+&nbsp;&nbsp;&nbsp;&nbsp;JobTracker：协调整个job的运行，其为一个Java进程，其main&nbsp;class为JobTracker<br>
+&nbsp;&nbsp;&nbsp;&nbsp;TaskTracker：运行此job的task，处理input&nbsp;split，其为一个Java进程，其main&nbsp;class为TaskTracker<br>
+&nbsp;&nbsp;&nbsp;&nbsp;HDFS：hadoop分布式文件系统，用于在各个进程间共享Job相关的文件<br>
+<br>
+image<br>
+3.1、任务提交<br>
+<br>
+JobClient.runJob()创建一个新的JobClient实例，调用其submitJob()函数。<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;向JobTracker请求一个新的job&nbsp;ID<br>
+&nbsp;&nbsp;&nbsp;&nbsp;检测此job的output配置<br>
+&nbsp;&nbsp;&nbsp;&nbsp;计算此job的input&nbsp;splits<br>
+&nbsp;&nbsp;&nbsp;&nbsp;将Job运行所需的资源拷贝到JobTracker的文件系统中的文件夹中，包括job&nbsp;jar文件，job.xml配置文件，input&nbsp;splits<br>
+&nbsp;&nbsp;&nbsp;&nbsp;通知JobTracker此Job已经可以运行了<br>
+<br>
+提交任务后，runJob每隔一秒钟轮询一次job的进度，将进度返回到命令行，直到任务运行完毕。<br>
+<br>
+&nbsp;<br>
+3.2、任务初始化<br>
+<br>
+&nbsp;<br>
+<br>
+当JobTracker收到submitJob调用的时候，将此任务放到一个队列中，job调度器将从队列中获取任务并初始化任务。<br>
+<br>
+初始化首先创建一个对象来封装job运行的tasks,&nbsp;status以及progress。<br>
+<br>
+在创建task之前，job调度器首先从共享文件系统中获得JobClient计算出的input&nbsp;splits。<br>
+<br>
+其为每个input&nbsp;split创建一个map&nbsp;task。<br>
+<br>
+每个task被分配一个ID。<br>
+<br>
+&nbsp;<br>
+3.3、任务分配<br>
+<br>
+&nbsp;<br>
+<br>
+TaskTracker周期性的向JobTracker发送heartbeat。<br>
+<br>
+在heartbeat中，TaskTracker告知JobTracker其已经准备运行一个新的task，JobTracker将分配给其一个task。<br>
+<br>
+在JobTracker为TaskTracker选择一个task之前，JobTracker必须首先按照优先级选择一个Job，在最高优先级的Job中选择一个task。<br>
+<br>
+TaskTracker有固定数量的位置来运行map&nbsp;task或者reduce&nbsp;task。<br>
+<br>
+默认的调度器对待map&nbsp;task优先于reduce&nbsp;task<br>
+<br>
+当选择reduce&nbsp;task的时候，JobTracker并不在多个task之间进行选择，而是直接取下一个，因为reduce&nbsp;task没有数据本地化的概念。<br>
+<br>
+&nbsp;<br>
+3.4、任务执行<br>
+<br>
+&nbsp;<br>
+<br>
+TaskTracker被分配了一个task，下面便要运行此task。<br>
+<br>
+首先，TaskTracker将此job的jar从共享文件系统中拷贝到TaskTracker的文件系统中。<br>
+<br>
+TaskTracker从distributed&nbsp;cache中将job运行所需要的文件拷贝到本地磁盘。<br>
+<br>
+其次，其为每个task创建一个本地的工作目录，将jar解压缩到文件目录中。<br>
+<br>
+其三，其创建一个TaskRunner来运行task。<br>
+<br>
+TaskRunner创建一个新的JVM来运行task。<br>
+<br>
+被创建的child&nbsp;JVM和TaskTracker通信来报告运行进度。<br>
+&nbsp;<br>
+3.4.1、Map的过程<br>
+<br>
+MapRunnable从input&nbsp;split中读取一个个的record，然后依次调用Mapper的map函数，将结果输出。<br>
+<br>
+map的输出并不是直接写入硬盘，而是将其写入缓存memory&nbsp;buffer。<br>
+<br>
+当buffer中数据的到达一定的大小，一个背景线程将数据开始写入硬盘。<br>
+<br>
+在写入硬盘之前，内存中的数据通过partitioner分成多个partition。<br>
+<br>
+在同一个partition中，背景线程会将数据按照key在内存中排序。<br>
+<br>
+每次从内存向硬盘flush数据，都生成一个新的spill文件。<br>
+<br>
+当此task结束之前，所有的spill文件被合并为一个整的被partition的而且排好序的文件。<br>
+<br>
+reducer可以通过http协议请求map的输出文件，tracker.http.threads可以设置http服务线程数。<br>
+3.4.2、Reduce的过程<br>
+<br>
+当map&nbsp;task结束后，其通知TaskTracker，TaskTracker通知JobTracker。<br>
+<br>
+对于一个job，JobTracker知道TaskTracer和map输出的对应关系。<br>
+<br>
+reducer中一个线程周期性的向JobTracker请求map输出的位置，直到其取得了所有的map输出。<br>
+<br>
+reduce&nbsp;task需要其对应的partition的所有的map输出。<br>
+<br>
+reduce&nbsp;task中的copy过程即当每个map&nbsp;task结束的时候就开始拷贝输出，因为不同的map&nbsp;task完成时间不同。<br>
+<br>
+reduce&nbsp;task中有多个copy线程，可以并行拷贝map输出。<br>
+<br>
+当很多map输出拷贝到reduce&nbsp;task后，一个背景线程将其合并为一个大的排好序的文件。<br>
+<br>
+当所有的map输出都拷贝到reduce&nbsp;task后，进入sort过程，将所有的map输出合并为大的排好序的文件。<br>
+<br>
+最后进入reduce过程，调用reducer的reduce函数，处理排好序的输出的每个key，最后的结果写入HDFS。<br>
+<br>
+&nbsp;<br>
+<br>
+image<br>
+<br>
+&nbsp;<br>
+3.5、任务结束<br>
+<br>
+&nbsp;<br>
+<br>
+当JobTracker获得最后一个task的运行成功的报告后，将job得状态改为成功。<br>
+<br>
+当JobClient从JobTracker轮询的时候，发现此job已经成功结束，则向用户打印消息，从runJob函数中返回。
+
+              <div id="topic-extra-info">
+                <div class="social-share">
+  <!-- Baidu Button BEGIN -->
+  <span id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+    <a class="bds_tsina" title="分享到新浪微博" href="http://bbs.csdn.net/topics/390412274#"></a>
+    <a class="bds_tqq" title="分享到腾讯微博" href="http://bbs.csdn.net/topics/390412274#"></a>
+    <span class="bds_more">更多</span>
+    <a class="shareCount" href="http://bbs.csdn.net/topics/390412274#" title="累计分享0次">0</a>
+  </span>
+  <span class="prompt">分享到：</span>
+  <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3329407" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/bds_s_v2.js"></script>
+  
+  <script type="text/javascript">
+    var bds_config = {
+      "snsKey": { 
+        'tsina': '3657746030',
+        'tqq': '801356742',
+      }
+    };
+
+    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+  </script>
+  <!-- Baidu Button END -->
+</div>
+
+              <div id="topic-suggest">
+        <div id="real_topic">
+            <div class="related-tags">
+    <span>相关主题推荐：</span>
+    <div id="suggest_tags">
+    </div>
+  </div>
+
+            <div class="related-topics tracking-ad" data-pid="bbs" data-mod="popu_18">
+    <span>相关推荐：</span>
+    <ul id="suggest_topics">
+    </ul>
+  </div>
+          <div class="related-topics" data-pid="bbs" data-mod="popu_84">
+    <a href="http://bbs.csdn.net/topics/www.baidu.com" style="display: none">123</a>
+    <span>&nbsp;</span>
+    <ul id="suggest_course" data-pid="bbs" data-mod="popu_84"><li><a href="http://edu.csdn.net/course/detail/352" target="_blank">Hadoop 2.X企业级开发入门系列</a></li><li><a href="http://edu.csdn.net/course/detail/322" target="_blank">Spark 1.x大数据平台</a></li><li><a href="http://edu.csdn.net/course/detail/300" target="_blank">深入浅出Hadoop实战开发</a></li><li><a href="http://edu.csdn.net/course/detail/395" target="_blank">零基础学Java系列从入门到精通</a></li></ul>
+</div>
+        </div>
+        <!--<div id="job_bbs_reco">-->
+          <!--<script src="http://c.csdnimg.cn/jobreco/job_reco.js" type="text/javascript"></script>-->
+        <!--</div>-->
+</div></div>
+
+              <!-- 主帖下Banner (D4) -->
+              <!-- 主帖下文字 (D5) -->
+              <iframe id="tad2" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" width="100%" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/TopicBodyBottom.html"></iframe>
+        </div>
+
+      </td>
+    </tr>
+    <tr>
+      <td valign="bottom">
+          <div class="control">
+  <div class="fr">
+      <a href="http://bbs.csdn.net/posts/394092873/digg?topic_id=390412274" class="red digg" data-method="put" data-remote="true" rel="nofollow">对我有用[0]</a>
+      <a href="http://bbs.csdn.net/posts/394092873/bury?topic_id=390412274" class="bury" data-method="put" data-remote="true" rel="nofollow">丢个板砖[2]</a>
+      <a href="http://bbs.csdn.net/topics/390412274#quote" class="quote" rel="nofollow">引用</a> |
+      <a href="http://bbs.csdn.net/posts/394092873/report?topic_id=390412274" class="fancybox red report_spam" rel="nofollow">举报 </a> |
+    <span class="manage-toggle">
+      <div class="manage" style="display: none;">
+          <a href="http://bbs.csdn.net/topics/390412274/edit" class="fancybox" rel="nofollow">编辑</a>
+          <a href="http://bbs.csdn.net/topics/390412274/destroy_edit" class="fancybox" rel="nofollow">删除</a>
+      </div>
+      管理
+    </span>
+  </div>
+    <span class="return_time">回复次数：1</span>
+</div>
+
+      </td>
+  </tr>
+</tbody></table>
+
+
+    
+    <script>
+        var topic_suggest = $('#topic-suggest');
+        $('#topic-extra-info').append(topic_suggest);
+      </script>
+        <!--<script type="text/javascript">-->
+            <!--csdn.position.show({-->
+                <!--sourceType: "discussion_topic",-->
+                <!--tplType: "bbsDetail",-->
+                <!--searchType: "detail",-->
+                <!--searchKey: "",-->
+                <!--username: "",-->
+                <!--containerId: "job_bbs_reco"  //容器DIV的id。-->
+            <!--});-->
+        <!--</script>-->
+
+  
+
+<table border="0" cellspacing="0" cellpadding="0" id="post-394092887" class="post  " data-post-id="394092887" data-is-topic-locked="false">
+  <colgroup><col width="180"><col></colgroup>
+  <tbody><tr>
+      <td rowspan="2" valign="top" class="wirter">
+                <dl class="user_info ">
+          <dt class="user_head" data-username="PigRunO">
+            <a href="http://my.csdn.net/PigRunO" rel="nofollow" target="_blank"><img alt="PigRunO" class="avatar" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/1_pigruno.jpg"></a>
+          </dt>
+
+            <dd id="19777842_bbs-btn-close-attention" class="bbs-user-att" style="display:none;">
+              <form action="http://bbs.csdn.net/users/19777842/cancel_attention" class="button_to" data-remote="true" method="get"><div><input class="bbs-btn-blue25 bbs-btn-close-attention" type="submit" value="取消关注"></div></form>
+            </dd>
+            <dd id="19777842_bbs-btn-attention" class="bbs-user-att">
+              <form action="http://bbs.csdn.net/users/19777842/attention" class="button_to" data-remote="true" method="get"><div><input class="bbs-btn-blue25 bbs-btn-attention" type="submit" value="关注"></div></form>
+            </dd>
+
+          <dd class="username">
+            <a href="http://my.csdn.net/PigRunO" rel="nofollow" target="_blank" title="PigRunO">PigRunO</a>
+            
+          </dd>
+          <dd class="nickname">
+            <span class="name2nick">又丑又萌的八戒</span>
+          </dd>
+
+          <dd>
+            本版等级：<img alt="T1" class="topic_show_user_level" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/t1.png">
+            <div class="topic_show_posts">
+              <div class="smallTittle">
+                <div class="JianJiao" style="left: 40%; top: -8px; position: absolute; width: 0; height: 0;border-left: 10px solid transparent;border-right: 10px solid transparent; border-bottom: 8px solid #ffffff;"></div>
+                本版专家分：15
+              </div>
+            </div>
+          </dd>
+
+          <dd class="close_rate" title="用户结帖率：93.33%
+总发帖：15
+正常结帖：14
+未结帖：1">结帖率：93.33%</dd>
+
+          <dd class="showTittleDD">
+
+          </dd>
+
+        </dl>
+
+      </td>
+      <td valign="top" class="post_info " data-username="PigRunO" data-floor="1">
+                <div class="data">
+            <span class="fr">
+              <a href="http://bbs.csdn.net/topics/390412274#post-394092887">#1</a>
+              得分：0
+            </span>
+          <span class="time">
+              回复于：
+            2013-04-02 09:39:08
+          </span>
+                  <!--<span class="time" style="font-size: 12px">-->
+                    <!--<img src="/assets/phone.png"/>&nbsp;来自移动客户端-->
+                  <!--</span>-->
+        </div>
+        <div class="post_body">
+
+
+            此帖准们为那些对map和reduce函数的参数对应不十分了解的人使用&nbsp;&nbsp;我是小菜&nbsp;求大侠指点
+
+        </div>
+
+      </td>
+    </tr>
+    <tr>
+      <td valign="bottom">
+          <div class="control">
+    <div id="post-forum-bulletin-1" class="fl tracking-ad" data-mod="popu_9"><a href="http://bbs.csdn.net/topics/391820648" class="title_style_red title_style_bold" target="_blank">大波C币等着你 问答9月新活动</a></div>
+  <div class="fr">
+      <a href="http://bbs.csdn.net/posts/394092887/digg?topic_id=390412274" class="red digg" data-method="put" data-remote="true" rel="nofollow">对我有用[0]</a>
+      <a href="http://bbs.csdn.net/posts/394092887/bury?topic_id=390412274" class="bury" data-method="put" data-remote="true" rel="nofollow">丢个板砖[0]</a>
+      <a href="http://bbs.csdn.net/topics/390412274#quote" class="quote" rel="nofollow">引用</a> |
+      <a href="http://bbs.csdn.net/posts/394092887/report?topic_id=390412274" class="fancybox red report_spam" rel="nofollow">举报 </a> |
+    <span class="manage-toggle">
+      <div class="manage" style="display: none;">
+          <a href="http://bbs.csdn.net/posts/394092887/edit" class="fancybox" rel="nofollow">编辑</a>
+          <a href="http://bbs.csdn.net/posts/394092887/destroy_edit" class="fancybox" rel="nofollow">删除</a>
+      </div>
+      管理
+    </span>
+  </div>
+</div>
+
+      </td>
+  </tr>
+</tbody></table>
+
+
+
+</div>
+<input type="hidden" id="autosave_post_val" value="">
+<input type="hidden" id="autosave_old_post_val">
+<!-- <div class='around&#45;topics'> -->
+<!--   <span class='preview'> -->
+<!--      -->
+<!--   </span> -->
+<!--   | -->
+<!--   <span class='next'> -->
+<!--      -->
+<!--   </span> -->
+<!-- </div> -->
+
+<div class="control_area bottom">
+  <form name="form" id="form">
+    
+    <span class="back_to_forum_list"><a href="http://bbs.csdn.net/forums/hadoop">返回列表</a></span>
+    <div class="control">
+      <ul>
+        <li class="drop_menu_wrap drop_menu_up">
+          <a href="http://bbs.csdn.net/topics/390412274#" class="drop_toggle btn_1 drop_toggle_up" rel="nofollow">
+            <span>
+              <img src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/ico_set.gif" alt="">管理菜单<img src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/arrow_down.gif" alt="">
+            </span>
+          </a>
+          <ul class="drop_menu" style="display: none; bottom:26px">
+              <li><a href="http://bbs.csdn.net/topics/390412274/top" class="fancybox" rel="nofollow">置顶</a></li>
+
+  <li><a href="http://bbs.csdn.net/topics/390412274/recommend" data-confirm="您确定要推荐该帖吗？帖子被推荐后将奖励发帖用 户88个可用分和3个C币!" data-method="put" rel="nofollow">推荐</a></li>
+
+  <li><a href="http://bbs.csdn.net/topics/390412274/lock" class="fancybox" rel="nofollow">锁定</a></li>
+
+<li><a href="http://bbs.csdn.net/topics/390412274/move" class="fancybox" rel="nofollow">移动</a></li>
+<li><a href="http://bbs.csdn.net/topics/390412274/edit" class="fancybox" rel="nofollow">编辑</a></li>
+<li><a href="http://bbs.csdn.net/topics/390412274/destroy_edit" class="fancybox" rel="nofollow">删除</a></li>
+<li><a href="http://bbs.csdn.net/topics/390412274/add_point" class="fancybox" rel="nofollow">帖子加分</a></li>
+  <li><a href="http://bbs.csdn.net/topics/390412274/highlight" class="fancybox" rel="nofollow">帖子高亮</a></li>
+
+          </ul>
+        </li>
+        <li>
+          <a href="http://bbs.csdn.net/topics/390412274/close" class="btn_1 close_topic" rel="nofollow">
+            <span><img src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/ico_over.gif" alt="">结帖</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://bbs.csdn.net/topics/new?forum_id=hadoop" class="btn_1 create_topic" rel="nofollow">
+            <span><img src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/ico_publish.gif" alt="">发帖</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://bbs.csdn.net/topics/390412274#new_post" class="btn_1 reply_topic" rel="nofollow">
+            <span><img src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/ico_return.gif" alt="">回复</span>
+          </a>
+        </li>
+          <li>
+            <a href="http://bbs.csdn.net/topics/390412274/attetion" class="btn_1 reply_topic" rel="nofollow">
+              <span><img src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/ico_attention_topic.png" title="关注">关注</span>
+            </a>
+          </li>
+      </ul>
+    </div>
+  </form>
+</div>
+<!--AdForward Begin:-->
+<script type="text/javascript" ads-src="http://csdnim.qtmojo.com/main/s?user=csdn|bbs|banner4&amp;db=csdnim&amp;border=0&amp;local=yes&amp;js=ie" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/AllyesDeliver.min.js" charset="gbk" id="allyes_ins_1eb5e9cd8" ads-outputs="0" ads-tid="1321699de_0"></script><div id="1321699de_0" style="padding:0;margin:0;border:0;"><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/s(4)"></script><script type="text/javascript">
+    /*论坛频道帖子页回复框上Banner 创建于 2014-07-03*/
+    var cpro_id = "u1904764";
+</script>
+<script src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/c.js" type="text/javascript"></script><div id="BAIDU_DUP_wrapper_u1904764_0"><iframe id="cproIframe_u1904764_1" width="960" height="90" src="about:blank" align="center,center" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" allowtransparency="true"></iframe></div><script charset="utf-8" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/acom"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script></div>
+<!--<script type="text/javascript" ads-src="http://csdnim.qtmojo.com/main/s?user=csdn|bbs|topics_text1&db=csdnim&border=0&local=yes&js=ie" src="http://creatim.qtmojo.cn/td/AllyesDeliver.min.js" charset="gbk"></script>-->
+<!--AdForward End-->
+<div class="comt">
+  <div class="ad_l">
+    <!-- 回复框文字 (D6) -->
+    <ul class="tracking-ad" data-mod="popu_10">
+      <li>
+        <script type="text/javascript" ads-src="http://csdnim.qtmojo.com/main/s?user=csdn|bbs|topicstext_6&amp;db=csdnim&amp;border=0&amp;local=yes&amp;js=ie" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/AllyesDeliver.min.js" charset="gbk" id="allyes_ins_1346248be" ads-outputs="0" ads-tid="eadb5b77_0"></script><div id="eadb5b77_0" style="padding:0;margin:0;border:0;"><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/s(5)"></script><script type="text/javascript">
+    /*论坛帖子页回复栏左侧文字链1 创建于 2014-07-03*/
+    var cpro_id = "u1636217";
+</script>
+<script src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/c.js" type="text/javascript"></script><div id="BAIDU_DUP_wrapper_u1636217_0"><iframe id="cproIframe_u1636217_2" width="200" height="22" src="about:blank" align="center,center" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" allowtransparency="true"></iframe></div><script charset="utf-8" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/acom(1)"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script></div>
+      </li>
+      <li>
+        <script type="text/javascript" ads-src="http://csdnim.qtmojo.com/main/s?user=csdn|bbs|topicstext_7&amp;db=csdnim&amp;border=0&amp;local=yes&amp;js=ie" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/AllyesDeliver.min.js" charset="gbk" id="allyes_ins_6f5d8384" ads-outputs="0" ads-tid="176806853_0"></script><div id="176806853_0" style="padding:0;margin:0;border:0;"><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/s(6)"></script><script type="text/javascript">
+    /*论坛帖子页回复栏左侧文字链2 创建于 2014-07-03*/
+    var cpro_id = "u1636219";
+</script>
+<script src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/c.js" type="text/javascript"></script><div id="BAIDU_DUP_wrapper_u1636219_0"><iframe id="cproIframe_u1636219_3" width="200" height="22" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/acom.html" align="center,center" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" allowtransparency="true"></iframe></div><script charset="utf-8" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/acom(2)"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script></div>
+      </li>
+      <li>
+        <script type="text/javascript" ads-src="http://csdnim.qtmojo.com/main/s?user=csdn|bbs|topicstext_8&amp;db=csdnim&amp;border=0&amp;local=yes&amp;js=ie" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/AllyesDeliver.min.js" charset="gbk" id="allyes_ins_86fa015a" ads-outputs="0" ads-tid="214bfa208_0"></script><div id="214bfa208_0" style="padding:0;margin:0;border:0;"><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/s(7)"></script><script type="text/javascript">
+    /*论坛帖子页回复栏左侧文字链3创建于 2014-07-03*/
+    var cpro_id = "u1636223";
+</script>
+<script src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/c.js" type="text/javascript"></script><div id="BAIDU_DUP_wrapper_u1636223_0"><iframe id="cproIframe_u1636223_4" width="200" height="22" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/acom(12).html" align="center,center" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" allowtransparency="true"></iframe></div><script charset="utf-8" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/acom(3)"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script></div>
+      </li>
+      <li>
+        <script type="text/javascript" ads-src="http://csdnim.qtmojo.com/main/s?user=csdn|bbs|topicstext_9&amp;db=csdnim&amp;border=0&amp;local=yes&amp;js=ie" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/AllyesDeliver.min.js" charset="gbk" id="allyes_ins_98180765" ads-outputs="0" ads-tid="1b627e877_0"></script><div id="1b627e877_0" style="padding:0;margin:0;border:0;"><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/s(8)"></script><script type="text/javascript">
+    /*论坛帖子页回复栏左侧文字链4 创建于 2014-07-03*/
+    var cpro_id = "u1636225";
+</script>
+<script src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/c.js" type="text/javascript"></script><div id="BAIDU_DUP_wrapper_u1636225_0"><iframe id="cproIframe_u1636225_5" width="200" height="22" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/acom(15).html" align="center,center" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" allowtransparency="true"></iframe></div><script charset="utf-8" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/acom(4)"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script><script type="text/javascript" data-belong="allyes" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/delay.min.js"></script></div>
+      </li>
+
+        <li><a href="http://www.csdn.net/app/" class="title_style_red title_style_bold" target="_blank">CSDN 移动客户端正式发布</a></li>
+        <li><a href="http://huiyi.csdn.net/activity/product/goods_list?project_id=2387" class="title_style_blue title_style_bold" target="_blank">swift 技术大揭秘，大咖答疑</a></li>
+        <li><a href="http://edu.csdn.net/course/detail/282" class="title_style_red title_style_bold" target="_blank">微信公众平台开发入门</a></li>
+        <li><a href="http://edu.csdn.net/course/detail/427" class="title_style_blue title_style_bold" target="_blank">深入理解计算机网络</a></li>
+    </ul>
+    <div class="ad_new tracking-ad" style="padding: 0 0 50px 0" data-mod="popu_11">
+      <h4><img alt="" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/csdn_logo_blue.gif"></h4>
+      <p class="title">
+      <a href="http://bbs.csdn.net/topics/390762408" target="_blank">CSDN</a>
+      </p>
+      <p class="con">
+      <a href="http://bbs.csdn.net/topics/390762408" target="_blank">CSDN社区问答精华QA</a>
+      </p>
+    </div>
+  </div>
+  <div class="reply">
+      <form accept-charset="UTF-8" action="http://bbs.csdn.net/posts?topic_id=390412274" class="new_post" id="new_post" method="post" novalidate="novalidate"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="0lSzOutaUhjsCuwbqpXbs3c2a/+f1ulseGPDQjX7fkY="></div>        <div>
+          <strong>回复内容</strong>
+            <span class="login">匿名用户不能发表回复！<a href="javascript:void(0); " onclick="loginbox();">登录</a>|<a href="https://passport.csdn.net/account/register" target="_blank">注册</a></span>
+          &nbsp;&nbsp;<a href="http://www.csdn.net/app/" target="_blank" style="color: red">移动客户端回帖所得专家分翻倍，下载体验！</a>
+        </div>
+        <div class="editor">
+          <div><div id="markItUpPost_body" class="markItUp"><div class="tab"> <ul> <li class="hover"><a class="edit_btn_a" href="javascript:void(0);"><span>编辑</span></a></li> <li><a class="preview_btn_a" href="javascript:void(0);"><span>预览</span></a></li> </ul> </div><div class="markItUpContainer"><div class="markItUpHeader"><ul><li class="markItUpButton markItUpButton1 bbtn_bold"><a href="" title="粗体">粗体</a></li><li class="markItUpButton markItUpButton2 bbtn_italic"><a href="" title="斜体">斜体</a></li><li class="markItUpButton markItUpButton3 bbtn_underline"><a href="" title="下划线">下划线</a></li><li class="markItUpSeparator">---------------</li><li class="markItUpButton markItUpButton4 bbtn_size not_prompt markItUpDropMenu"><a href="" title="字体大小">字体大小</a><ul><li class="markItUpButton markItUpButton4-1 col1-1"><a href="" title="12px">12px</a></li><li class="markItUpButton markItUpButton4-2 col1-2"><a href="" title="13px">13px</a></li><li class="markItUpButton markItUpButton4-3 col1-3"><a href="" title="14px">14px</a></li><li class="markItUpButton markItUpButton4-4 col2-1"><a href="" title="16px">16px</a></li><li class="markItUpButton markItUpButton4-5 col2-2"><a href="" title="18px">18px</a></li><li class="markItUpButton markItUpButton4-6 col2-3"><a href="" title="24px">24px</a></li></ul></li><li class="markItUpButton markItUpButton5 bbtn_color not_prompt markItUpDropMenu"><a href="" title="字体颜色">字体颜色</a><ul><li class="markItUpButton markItUpButton5-1 col1-1"><a href="" title="黑色">黑色</a></li><li class="markItUpButton markItUpButton5-2 col1-2"><a href="" title="褐色">褐色</a></li><li class="markItUpButton markItUpButton5-3 col1-3"><a href="" title="橄榄色">橄榄色</a></li><li class="markItUpButton markItUpButton5-4 col1-4"><a href="" title="深绿">深绿</a></li><li class="markItUpButton markItUpButton5-5 col1-5"><a href="" title="深青">深青</a></li><li class="markItUpButton markItUpButton5-6 col1-6"><a href="" title="深蓝">深蓝</a></li><li class="markItUpButton markItUpButton5-7 col1-7"><a href="" title="靛蓝">靛蓝</a></li><li class="markItUpButton markItUpButton5-8 col1-8"><a href="" title="灰色-80%">灰色-80%</a></li><li class="markItUpButton markItUpButton5-9 col2-1"><a href="" title="深红">深红</a></li><li class="markItUpButton markItUpButton5-10 col2-2"><a href="" title="橙色">橙色</a></li><li class="markItUpButton markItUpButton5-11 col2-3"><a href="" title="深黄">深黄</a></li><li class="markItUpButton markItUpButton5-12 col2-4"><a href="" title="绿色">绿色</a></li><li class="markItUpButton markItUpButton5-13 col2-5"><a href="" title="绿色">绿色</a></li><li class="markItUpButton markItUpButton5-14 col2-6"><a href="" title="蓝色">蓝色</a></li><li class="markItUpButton markItUpButton5-15 col2-7"><a href="" title="蓝-灰">蓝-灰</a></li><li class="markItUpButton markItUpButton5-16 col2-8"><a href="" title="灰色-50%">灰色-50%</a></li><li class="markItUpButton markItUpButton5-17 col3-1"><a href="" title="红色">红色</a></li><li class="markItUpButton markItUpButton5-18 col3-2"><a href="" title="浅橙">浅橙</a></li><li class="markItUpButton markItUpButton5-19 col3-3"><a href="" title="酸橙">酸橙</a></li><li class="markItUpButton markItUpButton5-20 col3-4"><a href="" title="海绿">海绿</a></li><li class="markItUpButton markItUpButton5-21 col3-5"><a href="" title="水绿色">水绿色</a></li><li class="markItUpButton markItUpButton5-22 col3-6"><a href="" title="浅蓝">浅蓝</a></li><li class="markItUpButton markItUpButton5-23 col3-7"><a href="" title="紫罗兰">紫罗兰</a></li><li class="markItUpButton markItUpButton5-24 col3-8"><a href="" title="灰色-40%">灰色-40%</a></li><li class="markItUpButton markItUpButton5-25 col4-1"><a href="" title="粉红">粉红</a></li><li class="markItUpButton markItUpButton5-26 col4-2"><a href="" title="金色">金色</a></li><li class="markItUpButton markItUpButton5-27 col4-3"><a href="" title="黄色">黄色</a></li><li class="markItUpButton markItUpButton5-28 col4-4"><a href="" title="鲜绿">鲜绿</a></li><li class="markItUpButton markItUpButton5-29 col4-5"><a href="" title="青绿">青绿</a></li><li class="markItUpButton markItUpButton5-30 col4-6"><a href="" title="天蓝">天蓝</a></li><li class="markItUpButton markItUpButton5-31 col4-7"><a href="" title="梅红">梅红</a></li><li class="markItUpButton markItUpButton5-32 col4-8"><a href="" title="灰色-25%">灰色-25%</a></li><li class="markItUpButton markItUpButton5-33 col5-1"><a href="" title="玖瑰红">玖瑰红</a></li><li class="markItUpButton markItUpButton5-34 col5-2"><a href="" title="茶色">茶色</a></li><li class="markItUpButton markItUpButton5-35 col5-3"><a href="" title="浅黄">浅黄</a></li><li class="markItUpButton markItUpButton5-36 col5-4"><a href="" title="浅绿">浅绿</a></li><li class="markItUpButton markItUpButton5-37 col5-5"><a href="" title="浅青绿">浅青绿</a></li><li class="markItUpButton markItUpButton5-38 col5-6"><a href="" title="淡蓝">淡蓝</a></li><li class="markItUpButton markItUpButton5-39 col5-7"><a href="" title="淡紫">淡紫</a></li><li class="markItUpButton markItUpButton5-40 col5-8"><a href="" title="白色">白色</a></li></ul></li><li class="markItUpSeparator">---------------</li><li class="markItUpButton markItUpButton6 picture bbtn_picture"><a href="" title="图片">图片</a></li><li class="markItUpButton markItUpButton7 bbtn_link"><a href="" title="链接">链接</a></li><li class="markItUpSeparator">---------------</li><li class="markItUpButton markItUpButton8 bbtn_align_left"><a href="" title="左对齐">左对齐</a></li><li class="markItUpButton markItUpButton9 bbtn_align_center"><a href="" title="居中对齐">居中对齐</a></li><li class="markItUpButton markItUpButton10 bbtn_align_right"><a href="" title="右对齐">右对齐</a></li><li class="markItUpSeparator">---------------</li><li class="markItUpButton markItUpButton11 bbtn_quotes"><a href="" title="引用">引用</a></li><li class="markItUpButton markItUpButton12 bbtn_code not_prompt markItUpDropMenu"><a href="" title="代码">代码</a><ul><li class="markItUpButton markItUpButton12-1 "><a href="" title="C#">C#</a></li><li class="markItUpButton markItUpButton12-2 "><a href="" title="C/C++">C/C++</a></li><li class="markItUpButton markItUpButton12-3 "><a href="" title="CSS">CSS</a></li><li class="markItUpButton markItUpButton12-4 "><a href="" title="Delphi/Pascal">Delphi/Pascal</a></li><li class="markItUpButton markItUpButton12-5 "><a href="" title="JavaScript">JavaScript</a></li><li class="markItUpButton markItUpButton12-6 "><a href="" title="Java">Java</a></li><li class="markItUpButton markItUpButton12-7 "><a href="" title="Objective C">Objective C</a></li><li class="markItUpButton markItUpButton12-8 "><a href="" title="Perl">Perl</a></li><li class="markItUpButton markItUpButton12-9 "><a href="" title="PHP">PHP</a></li><li class="markItUpButton markItUpButton12-10 "><a href="" title="Python">Python</a></li><li class="markItUpButton markItUpButton12-11 "><a href="" title="Ruby">Ruby</a></li><li class="markItUpButton markItUpButton12-12 "><a href="" title="SQL">SQL</a></li><li class="markItUpButton markItUpButton12-13 "><a href="" title="Visual Basic">Visual Basic</a></li><li class="markItUpButton markItUpButton12-14 "><a href="" title="HTML">HTML</a></li><li class="markItUpButton markItUpButton12-15 "><a href="" title="其他">其他</a></li></ul></li><li class="markItUpSeparator">---------------</li><li class="markItUpButton markItUpButton13 emoticons emoticons_qq markItUpDropMenu"><a href="" title="QQ">QQ</a><ul><li class="markItUpButton markItUpButton13-1 emoticon emoticon_qq_1"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-2 emoticon emoticon_qq_2"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-3 emoticon emoticon_qq_3"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-4 emoticon emoticon_qq_4"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-5 emoticon emoticon_qq_5"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-6 emoticon emoticon_qq_6"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-7 emoticon emoticon_qq_7"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-8 emoticon emoticon_qq_8"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-9 emoticon emoticon_qq_9"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-10 emoticon emoticon_qq_10"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-11 emoticon emoticon_qq_11"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-12 emoticon emoticon_qq_12"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-13 emoticon emoticon_qq_13"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-14 emoticon emoticon_qq_14"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-15 emoticon emoticon_qq_15"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-16 emoticon emoticon_qq_16"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-17 emoticon emoticon_qq_17"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-18 emoticon emoticon_qq_18"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-19 emoticon emoticon_qq_19"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-20 emoticon emoticon_qq_20"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-21 emoticon emoticon_qq_21"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-22 emoticon emoticon_qq_22"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-23 emoticon emoticon_qq_23"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-24 emoticon emoticon_qq_24"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-25 emoticon emoticon_qq_25"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-26 emoticon emoticon_qq_26"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-27 emoticon emoticon_qq_27"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-28 emoticon emoticon_qq_28"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-29 emoticon emoticon_qq_29"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-30 emoticon emoticon_qq_30"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-31 emoticon emoticon_qq_31"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-32 emoticon emoticon_qq_32"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-33 emoticon emoticon_qq_33"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-34 emoticon emoticon_qq_34"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-35 emoticon emoticon_qq_35"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-36 emoticon emoticon_qq_36"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-37 emoticon emoticon_qq_37"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-38 emoticon emoticon_qq_38"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-39 emoticon emoticon_qq_39"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-40 emoticon emoticon_qq_40"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-41 emoticon emoticon_qq_41"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-42 emoticon emoticon_qq_42"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-43 emoticon emoticon_qq_43"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-44 emoticon emoticon_qq_44"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-45 emoticon emoticon_qq_45"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-46 emoticon emoticon_qq_46"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-47 emoticon emoticon_qq_47"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-48 emoticon emoticon_qq_48"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-49 emoticon emoticon_qq_49"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-50 emoticon emoticon_qq_50"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-51 emoticon emoticon_qq_51"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-52 emoticon emoticon_qq_52"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-53 emoticon emoticon_qq_53"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-54 emoticon emoticon_qq_54"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-55 emoticon emoticon_qq_55"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-56 emoticon emoticon_qq_56"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-57 emoticon emoticon_qq_57"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-58 emoticon emoticon_qq_58"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-59 emoticon emoticon_qq_59"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-60 emoticon emoticon_qq_60"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-61 emoticon emoticon_qq_61"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-62 emoticon emoticon_qq_62"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-63 emoticon emoticon_qq_63"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-64 emoticon emoticon_qq_64"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-65 emoticon emoticon_qq_65"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-66 emoticon emoticon_qq_66"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-67 emoticon emoticon_qq_67"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-68 emoticon emoticon_qq_68"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-69 emoticon emoticon_qq_69"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-70 emoticon emoticon_qq_70"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-71 emoticon emoticon_qq_71"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-72 emoticon emoticon_qq_72"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-73 emoticon emoticon_qq_73"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-74 emoticon emoticon_qq_74"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-75 emoticon emoticon_qq_75"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-76 emoticon emoticon_qq_76"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-77 emoticon emoticon_qq_77"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-78 emoticon emoticon_qq_78"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-79 emoticon emoticon_qq_79"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-80 emoticon emoticon_qq_80"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-81 emoticon emoticon_qq_81"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-82 emoticon emoticon_qq_82"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-83 emoticon emoticon_qq_83"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-84 emoticon emoticon_qq_84"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-85 emoticon emoticon_qq_85"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-86 emoticon emoticon_qq_86"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-87 emoticon emoticon_qq_87"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-88 emoticon emoticon_qq_88"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-89 emoticon emoticon_qq_89"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-90 emoticon emoticon_qq_90"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-91 emoticon emoticon_qq_91"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-92 emoticon emoticon_qq_92"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-93 emoticon emoticon_qq_93"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-94 emoticon emoticon_qq_94"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-95 emoticon emoticon_qq_95"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-96 emoticon emoticon_qq_96"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-97 emoticon emoticon_qq_97"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-98 emoticon emoticon_qq_98"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-99 emoticon emoticon_qq_99"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-100 emoticon emoticon_qq_100"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-101 emoticon emoticon_qq_101"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-102 emoticon emoticon_qq_102"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-103 emoticon emoticon_qq_103"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-104 emoticon emoticon_qq_104"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-105 emoticon emoticon_qq_105"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-106 emoticon emoticon_qq_106"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-107 emoticon emoticon_qq_107"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-108 emoticon emoticon_qq_108"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-109 emoticon emoticon_qq_109"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-110 emoticon emoticon_qq_110"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-111 emoticon emoticon_qq_111"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-112 emoticon emoticon_qq_112"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-113 emoticon emoticon_qq_113"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-114 emoticon emoticon_qq_114"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-115 emoticon emoticon_qq_115"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-116 emoticon emoticon_qq_116"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-117 emoticon emoticon_qq_117"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-118 emoticon emoticon_qq_118"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-119 emoticon emoticon_qq_119"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-120 emoticon emoticon_qq_120"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-121 emoticon emoticon_qq_121"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-122 emoticon emoticon_qq_122"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-123 emoticon emoticon_qq_123"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-124 emoticon emoticon_qq_124"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-125 emoticon emoticon_qq_125"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-126 emoticon emoticon_qq_126"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-127 emoticon emoticon_qq_127"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-128 emoticon emoticon_qq_128"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-129 emoticon emoticon_qq_129"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-130 emoticon emoticon_qq_130"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-131 emoticon emoticon_qq_131"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-132 emoticon emoticon_qq_132"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-133 emoticon emoticon_qq_133"><a href="" title=""></a></li><li class="markItUpButton markItUpButton13-134 emoticon emoticon_qq_134"><a href="" title=""></a></li></ul></li><li class="markItUpButton markItUpButton14 emoticons emoticons_monkey markItUpDropMenu"><a href="" title="monkey">monkey</a><ul><li class="markItUpButton markItUpButton14-1 emoticon emoticon_monkey_1"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-2 emoticon emoticon_monkey_2"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-3 emoticon emoticon_monkey_3"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-4 emoticon emoticon_monkey_4"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-5 emoticon emoticon_monkey_5"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-6 emoticon emoticon_monkey_6"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-7 emoticon emoticon_monkey_7"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-8 emoticon emoticon_monkey_8"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-9 emoticon emoticon_monkey_9"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-10 emoticon emoticon_monkey_10"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-11 emoticon emoticon_monkey_11"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-12 emoticon emoticon_monkey_12"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-13 emoticon emoticon_monkey_13"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-14 emoticon emoticon_monkey_14"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-15 emoticon emoticon_monkey_15"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-16 emoticon emoticon_monkey_16"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-17 emoticon emoticon_monkey_17"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-18 emoticon emoticon_monkey_18"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-19 emoticon emoticon_monkey_19"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-20 emoticon emoticon_monkey_20"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-21 emoticon emoticon_monkey_21"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-22 emoticon emoticon_monkey_22"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-23 emoticon emoticon_monkey_23"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-24 emoticon emoticon_monkey_24"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-25 emoticon emoticon_monkey_25"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-26 emoticon emoticon_monkey_26"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-27 emoticon emoticon_monkey_27"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-28 emoticon emoticon_monkey_28"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-29 emoticon emoticon_monkey_29"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-30 emoticon emoticon_monkey_30"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-31 emoticon emoticon_monkey_31"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-32 emoticon emoticon_monkey_32"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-33 emoticon emoticon_monkey_33"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-34 emoticon emoticon_monkey_34"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-35 emoticon emoticon_monkey_35"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-36 emoticon emoticon_monkey_36"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-37 emoticon emoticon_monkey_37"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-38 emoticon emoticon_monkey_38"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-39 emoticon emoticon_monkey_39"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-40 emoticon emoticon_monkey_40"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-41 emoticon emoticon_monkey_41"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-42 emoticon emoticon_monkey_42"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-43 emoticon emoticon_monkey_43"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-44 emoticon emoticon_monkey_44"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-45 emoticon emoticon_monkey_45"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-46 emoticon emoticon_monkey_46"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-47 emoticon emoticon_monkey_47"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-48 emoticon emoticon_monkey_48"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-49 emoticon emoticon_monkey_49"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-50 emoticon emoticon_monkey_50"><a href="" title=""></a></li><li class="markItUpButton markItUpButton14-51 emoticon emoticon_monkey_51"><a href="" title=""></a></li></ul></li><li class="markItUpButton markItUpButton15 emoticons emoticons_onion markItUpDropMenu"><a href="" title="onion">onion</a><ul><li class="markItUpButton markItUpButton15-1 emoticon emoticon_onion_1"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-2 emoticon emoticon_onion_2"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-3 emoticon emoticon_onion_3"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-4 emoticon emoticon_onion_4"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-5 emoticon emoticon_onion_5"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-6 emoticon emoticon_onion_6"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-7 emoticon emoticon_onion_7"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-8 emoticon emoticon_onion_8"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-9 emoticon emoticon_onion_9"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-10 emoticon emoticon_onion_10"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-11 emoticon emoticon_onion_11"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-12 emoticon emoticon_onion_12"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-13 emoticon emoticon_onion_13"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-14 emoticon emoticon_onion_14"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-15 emoticon emoticon_onion_15"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-16 emoticon emoticon_onion_16"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-17 emoticon emoticon_onion_17"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-18 emoticon emoticon_onion_18"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-19 emoticon emoticon_onion_19"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-20 emoticon emoticon_onion_20"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-21 emoticon emoticon_onion_21"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-22 emoticon emoticon_onion_22"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-23 emoticon emoticon_onion_23"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-24 emoticon emoticon_onion_24"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-25 emoticon emoticon_onion_25"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-26 emoticon emoticon_onion_26"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-27 emoticon emoticon_onion_27"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-28 emoticon emoticon_onion_28"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-29 emoticon emoticon_onion_29"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-30 emoticon emoticon_onion_30"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-31 emoticon emoticon_onion_31"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-32 emoticon emoticon_onion_32"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-33 emoticon emoticon_onion_33"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-34 emoticon emoticon_onion_34"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-35 emoticon emoticon_onion_35"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-36 emoticon emoticon_onion_36"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-37 emoticon emoticon_onion_37"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-38 emoticon emoticon_onion_38"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-39 emoticon emoticon_onion_39"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-40 emoticon emoticon_onion_40"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-41 emoticon emoticon_onion_41"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-42 emoticon emoticon_onion_42"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-43 emoticon emoticon_onion_43"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-44 emoticon emoticon_onion_44"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-45 emoticon emoticon_onion_45"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-46 emoticon emoticon_onion_46"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-47 emoticon emoticon_onion_47"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-48 emoticon emoticon_onion_48"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-49 emoticon emoticon_onion_49"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-50 emoticon emoticon_onion_50"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-51 emoticon emoticon_onion_51"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-52 emoticon emoticon_onion_52"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-53 emoticon emoticon_onion_53"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-54 emoticon emoticon_onion_54"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-55 emoticon emoticon_onion_55"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-56 emoticon emoticon_onion_56"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-57 emoticon emoticon_onion_57"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-58 emoticon emoticon_onion_58"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-59 emoticon emoticon_onion_59"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-60 emoticon emoticon_onion_60"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-61 emoticon emoticon_onion_61"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-62 emoticon emoticon_onion_62"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-63 emoticon emoticon_onion_63"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-64 emoticon emoticon_onion_64"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-65 emoticon emoticon_onion_65"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-66 emoticon emoticon_onion_66"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-67 emoticon emoticon_onion_67"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-68 emoticon emoticon_onion_68"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-69 emoticon emoticon_onion_69"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-70 emoticon emoticon_onion_70"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-71 emoticon emoticon_onion_71"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-72 emoticon emoticon_onion_72"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-73 emoticon emoticon_onion_73"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-74 emoticon emoticon_onion_74"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-75 emoticon emoticon_onion_75"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-76 emoticon emoticon_onion_76"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-77 emoticon emoticon_onion_77"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-78 emoticon emoticon_onion_78"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-79 emoticon emoticon_onion_79"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-80 emoticon emoticon_onion_80"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-81 emoticon emoticon_onion_81"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-82 emoticon emoticon_onion_82"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-83 emoticon emoticon_onion_83"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-84 emoticon emoticon_onion_84"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-85 emoticon emoticon_onion_85"><a href="" title=""></a></li><li class="markItUpButton markItUpButton15-86 emoticon emoticon_onion_86"><a href="" title=""></a></li></ul></li><li class="markItUpSeparator">---------------</li><li class="markItUpButton markItUpButton16 bbtn_yabao"><a href="" title="押宝">押宝</a></li><li class="markItUpSeparator">---------------</li><li class="markItUpButton markItUpButton17 clean bbtn_clean"><a href="" title="清除格式">清除格式</a></li></ul></div><textarea class="required quoteOnly markItUpEditor" cols="40" id="post_body" name="post[body]" rows="20" style="word-break: break-all; word-wrap: break-word; font-family: Helvetica;"></textarea><div class="markItUpFooter"></div></div></div></div>
+          <div class="pub">
+            <span class="fr">
+              每天回帖即可获得10分可用分！小技巧：<a href="http://bbs.csdn.net/help#common_problem" target="_blank" rel="nofollow">教您如何更快获得可用分</a>
+              <span id="body_count_notice" class="body_count_notice_fixed">你还可以输入10000个字符</span>
+            </span>
+            <input class="btn_b" id="submit_new_post_form" name="commit" type="submit" value="提交回复">(Ctrl+Enter)
+          </div>
+        </div>
+        <ol class="notice">
+          <li>请遵守CSDN<a href="http://bbs.csdn.net/help#user_criterion" rel="nofollow">用户行为准则</a>，不得违反国家法律法规。</li>
+          <li>转载文章请注明出自“CSDN（www.csdn.net）”。如是商业用途请联系原作者。</li>
+        </ol>
+</form>      <script id="countTemplate" type="text/x-jquery-tmpl">
+        你还可以输入${count}个字符
+      </script>
+
+  </div>
+</div>
+<script>
+  $(function(){
+    $('.refresh-captcha').on('click', function(e){
+      e.preventDefault();
+      $('.captcha').load('/captchas/new');
+    });
+  });
+  $(function(){
+      showsuggest('post_body');
+  });
+</script>
+
+
+
+<!-- 对联广告 -->
+<div id="ad_left" style="position: absolute; width: 160px; top: 184px; left: 10px;">
+  <a style="float:right;" href="http://bbs.csdn.net/topics/390412274#" onclick="javascript:this.parentNode.style.display=&#39;none&#39;;return false;">[关闭]</a>
+  <iframe src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/acom(18).html" frameborder="0" height="600" width="160" scrolling="no"></iframe>
+</div>
+<div id="ad_right" style="position: absolute; width: 160px; top: 184px; right: 10px;">
+  <a style="float:left;" href="http://bbs.csdn.net/topics/390412274#" onclick="javascript:this.parentNode.style.display=&#39;none&#39;;return false;">[关闭]</a>
+  <iframe src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/acom(19).html" frameborder="0" height="600" width="160" scrolling="no"></iframe>
+</div>
+
+<script>
+  $(function(){
+    window.onresize = function(){
+      if($(parent.window).width() <= 1280){
+        $('#ad_right').hide();
+        $('#ad_left').hide();
+      } else {
+          $('#ad_right').show();
+          $('#ad_left').show();
+      }
+    };
+      if ($(parent.window).width() >= 1280) {
+          $('#ad_right').show();
+          $('#ad_left').show();
+      }
+  });
+
+</script>
+
+
+<!-- go-backhome   go-backchannel-->
+<!-- <button id="com-back-home" class="btn btn-top bbs-btn-gray28 bbs-btn-backhome" title="回到首页" style="cursor: pointer; border: 0px none; bottom: 35px; width: 80px; height: 28px; margin: 0px; padding: 0px; position: fixed; right: 40px; display: block; padding-right:13px;">回到首页</button>
+<button id="com-back-channel" class="btn btn-top bbs-btn-gray28 bbs-btn-backchannel" title="回到频道" style="cursor: pointer; border: 0px none; bottom:68px; width: 80px; height: 28px; margin: 0px; padding: 0px; position: fixed; right: 40px; display: block; padding-right:13px;">回到频道</button> -->
+
+    </div>
+            <script type="text/javascript">
+          $(function(){ posts_page_js._form_page(); });
+        </script>
+<script type="text/javascript" language="javascript" charset="utf-8">
+window.bbsInfoflag = true;
+//<![CDATA[
+$(function(){
+  $('.post .post_body fieldset+br').remove();
+  $('.post .post_body blockquote').each(function(index, item) {
+    var first_child = $(item).find(':first');
+    if($(item).contents().get(0) !== undefined &&
+      $(item).contents().get(0).nodeName.toLowerCase() === 'br' &&
+      first_child.prop('tagName').toLowerCase() === 'br') {
+      first_child.remove();
+    }
+  });
+
+  topics_page_js.show_page();
+  
+    var bulletin_link = '<a href="http://bbs.csdn.net/topics/391820648" class="title_style_red title_style_bold" target="_blank">大波C币等着你 问答9月新活动</a>'
+    $('#post-forum-bulletin-1').html(bulletin_link);
+    var bulletin_link = '<a href="http://bbs.csdn.net/topics/391823604" class="title_style_blue title_style_bold" target="_blank">问答频道每周精彩问答（第三期）</a>'
+    $('#post-forum-bulletin-2').html(bulletin_link);
+});
+
+$(".showTittleDD span").hover(
+        function () {
+            $(this).find(".showTittle")[0].style.display="inline-block";
+        },
+        function () {
+                $(this).find(".showTittle")[0].style.display="none";
+        }
+);
+
+$(".topic_show_user_level").hover(
+    function () {
+    $(this).next().find(".smallTittle")[0].style.display="inline-block";
+
+
+    },
+    function () {
+        $(this).next().find(".smallTittle")[0].style.display="none";
+    }
+);
+//]]>
+var auto_save_time = null;
+$(document).ready(function(){
+    autosavecontent = $("#autosave_post_val").val();
+    if(autosavecontent != ''){$("#post_body").val(autosavecontent);}
+    auto_save_time = setInterval(autosave, 90*1000);
+});
+function autosave(){
+    var content =  $("#post_body").val();
+    var old_content = $("#autosave_old_post_val").val();
+    topic_id = 390412274
+    if(content != "" && content != old_content) {
+        $.ajax({
+            type: 'post',
+            dataType: 'json',
+            url: '/posts/autosave_post',
+            data: {
+                content: content,
+                topic_id: topic_id
+            },
+            success: function (result) {
+                $("#autosave_old_post_val").val(content);
+            },
+            error: function (result) {
+              if(result.status == 403 && result.responseText == '需要登录'){
+                  clearInterval(auto_save_time);
+              }
+            }
+        })
+    }
+}
+
+
+$(function(){
+    // 课程推荐
+    $.ajax({
+        url: "http://internalapi.csdn.net/psearch/psearch/query",
+        type: "GET",
+        data: {_client_: "rcommend_course",
+                pro_id: "390412274",
+                pro_type: "discussion_topic",
+                fields: "created_at,tag,id,title,pic,stu_count,good_ratio,rc_flag,source_type",
+                size: 4,
+                user_id: "",
+                index_name: "pro_course_v2",
+                "x-acl-token": "wU4kru3sXrPwPGLhVloh9PV-n4YK"
+               },
+        dataType: 'JSONP',
+        success: function(result){
+            var res_arr = result['hits'];
+            var text = "";
+            for(var key in res_arr){
+                 var id = res_arr[key]['object']['id'];
+                 var title = res_arr[key]['object']['title'];
+                 text += "<li><a href='http://edu.csdn.net/course/detail/" +  id + "'" + " target='_blank'>" + title + "</a></li>";
+            }
+            $('#suggest_course').html(text);
+
+            var m = $("#suggest_course");
+
+            //控制新创基数据触发曝光开关
+            if(m.length>0){
+                m.each(function(i){
+                    console.log(i);
+                    trackingAd($(this));
+                });
+            }
+        }
+    });
+
+    // 标签推荐
+    $.ajax({
+        type: 'get',
+        url: 'http://internalapi.csdn.net/recommend/tag/suggest',
+        dataType: 'JSONP',
+        data: {title: "MapReduce参数详解",
+                body: "1、Map-Reduce的逻辑过程...",
+                type: "csdn",
+                "x-acl-token": "b4PPTlauakrI2cRr1Tg3PzfykTMK"
+        },
+        success: function(data){
+            var text= "";
+            var es = [];
+
+            for(var key in data){
+                var name = data[key]['name'];
+                es[key] = name;
+                text += "<a href='http://www.csdn.net/tag/" +  name + "'" + " target='_blank'>" + name + "</a>";
+            }
+
+            $('#suggest_tags').html(text);
+
+            // 帖子推荐
+            $.ajax({
+                url: "http://internalapi.csdn.net/tag/tag/search",
+                size: 4,
+                type: "GET",
+                data: {
+                    types: "topic",
+                    tagNames: es.join(','),
+                    size: 4,
+                    "x-acl-token": "dDH/ijXIA58154g38-QLg8mnNAsK"
+                },
+                dataType: 'JSONP',
+                success: function(result){
+                    var res_arr = result['result'];
+                    var text = "";
+                    for(var key in res_arr){
+                        var id = res_arr[key]['id'];
+                        var title = res_arr[key]['title'];
+                        var url = res_arr[key]['url'];
+                        text += "<li><a href='" +  url + "'" + " target='_blank'>" + title + "</a></li>";
+                    }
+                    $('#suggest_topics').html(text);
+                }
+            });
+        }
+    });
+
+});
+
+</script>
+<script type="text/javascript" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/ad-bbs.js"></script>
+
+    
+<div id="pop_win" style="display:none ;position: absolute; z-index: 10000; border: 1px solid rgb(220, 220, 220); top: 222.5px; left: 630px; opacity: 1; background: none 0px 0px repeat scroll rgb(255, 255, 255);">
+    
+</div>
+<div id="popup_mask"></div>
+<style>
+    #popup_mask
+    {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        z-index: 9999;
+        left: 0px;
+        top: 0px;
+        opacity: 0.3;
+        filter: alpha(opacity=30);
+        display: none;
+    }
+ 
+</style>
+
+    <script src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/component.js"></script>
+    <script type="text/javascript">
+  document.write('<script type="text/javascript" src="http://c.csdnimg.cn/pubfooter/js/publib_footer.js?' + Math.floor(new Date()/120000).toString(36) + '="></'+'script>');
+</script><script type="text/javascript" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/publib_footer.js"></script><link rel="stylesheet" type="text/css" href="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/pub_footer_2014.css"><div class="pub_fo"><div id="pub_footerall" class="pub_footer_new"><dl><dt></dt> <dd class="foot_sub_menu"><a href="http://www.csdn.net/company/about.html" target="_blank">公司简介</a><span>|</span><a href="http://www.csdn.net/company/recruit.html" target="_blank">招贤纳士</a><span>|</span><a href="http://www.csdn.net/company/marketing.html" target="_blank">广告服务</a><span>|</span><a href="http://www.csdn.net/company/account.html" target="_blank">银行汇款帐号</a><span>|</span><a href="http://www.csdn.net/company/contact.html" target="_blank">联系方式</a><span>|</span><a href="http://www.csdn.net/company/statement.html" target="_blank">版权声明</a><span>|</span><a href="http://www.csdn.net/company/layer.html" target="_blank">法律顾问</a><span>|</span><a href="mailto:webmaster@csdn.net">问题报告</a><span>|</span><a target="_blank" href="http://www.csdn.net/friendlink.html">合作伙伴</a><span>|</span><a href="http://bbs.csdn.net/forums/Service" target="_blank">论坛反馈</a></dd><dd class="foot_contact"><a href="http://wpa.qq.com/msgrd?v=3&uin=2355263776&site=qq&menu=yes" target="_blank" class="qq">网站客服</a><a href="http://wpa.qq.com/msgrd?v=3&uin=2251809102&site=qq&menu=yes" target="_blank" class="qq">杂志客服</a><a href="http://e.weibo.com/csdnsupport/profile" target="_blank" class="weibo">微博客服</a><a href="mailto:webmaster@csdn.net" class="email" title="联系邮箱">webmaster@csdn.net</a><span class="phone" title="服务热线">400-600-2320</span><span class="interval">|</span><span>北京创新乐知信息技术有限公司 版权所有</span><span class="interval">|</span><span>江苏乐知网络技术有限公司 提供商务支持</span></dd><dd class="foot_copyright"><span>京&nbsp;ICP&nbsp;证&nbsp;070598&nbsp;号</span><span class="interval">|</span><span>Copyright © 1999-2014, CSDN.NET, All Rights Reserved&nbsp;</span><a href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202001032100010" target="_blank"><img src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/gongshang_logos.gif" alt="GongshangLogo" title=""></a></dd></dl></div></div><div id="note1" class="csdn_note" style="display:none; position:absolute; z-index:9999; width:440px">  <span class="notice_top_arrow"><span class="inner"></span></span>  <div class="box"></div></div><div class="csdn_notice_tip" style="display:none; position:absolute; z-index:9990; width:170px">  <iframe src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/TopicDaLeft.html" frameborder="0" scrolling="no" style="z-index:-1;position:absolute;top:0;left:0;width:100%;height:100%;background:transparent"></iframe>  <div class="tip_text">您有<strong>0</strong>条新通知</div>  <a href="javascript:void 0" class="close2"></a></div><script id="noticeScript" type="text/javascript" btnid="header_notice_num" wrapid="note1" count="5" subcount="5" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/notify.js"></script><input type="hidden" id="aa_g_data_ids">
+<script type="text/javascript" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/counter.js"></script><script type="text/javascript" charset="UTF-8" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/msg.popup.js"></script>
+<!--<script type="text/javascript" ads-src="http://csdnim.qtmojo.com/main/s?user=csdn|homepage|WebIM_1&db=csdnim&border=0&local=yes&js=ie" src="http://creatim.qtmojo.cn/td/AllyesDeliver.min.js" charset="gbk"></script>-->
+
+<script type="text/javascript" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/cnick.js"></script>
+<script id="csdn-toolbar-id" btnid="header_notice_num" wrapid="note1" count="5" subcount="5" type="text/javascript" src="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/toolbar.js"></script>
+  
+
+<div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a href="javascript:;" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a href="javascript:;" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div><link rel="stylesheet" type="text/css" media="screen" href="./MapReduce参数详解-CSDN论坛-CSDN.NET-中国最大的IT技术社区_files/ask_float_fonts_css-6b30a53970eb5c3a2a045e3df585b475.css"><div data-mod="popu_64" class="tracking-ad" chg-blk="0"><a id="com-appcode-float-block" href="http://www.csdn.net/app/" target="_blank" title="APP二维码" style="top:198px"><span id="appcode-close"></span></a><a id="com-app-float-block" href="http://www.csdn.net/app/" title="APP下载" style="top:282px"></a><a id="com-quick-reply-bbs" title="快速回复" style="top:320px"></a><a id="com-back-channel" title="回到频道" style="top:358px"></a><a id="com-back-home" title="回到首页" style="top:396px"></a><a id="com-d-top-a" style="top: 434px; display: none;" title="返回顶部" onclick=""></a> </div><div class="pop_edit ask_second comm_ask_second"><h3>提问</h3><span class="ask_float_span">您的问题将会被发布在“<a class="ask_float_channel" href="http://ask.csdn.net/" target="_blank" style="cursor:pointer">技术问答</a>”频道</span><a href="http://bbs.csdn.net/topics/390412274#" nodetype="close" class="close">×</a><div class="context"><div class="err_div"><span class="err_ico"></span><span class="err_txt">该问题已存在，请勿重复提问</span></div><div class="input_div"><input id="askInputSecond" type="text" style="font-size:14px;" placeholder="问题标题"></div><div class="cm_box"><div class="cm_dialog"></div> <div class="pop_cm cm_add_link"><input type="text" placeholder="链接内容" id="af_cm_link_txt"><input type="text" placeholder="链接地址" id="af_cm_link_url"><input type="text" placeholder="链接提示" id="af_cm_link_tit"><div class="text-right"><span class="btn btn-default btn-sm" id="add_link_btn">插入链接</span> </div> </div><div class="pop_cm cm_add_img"><div class="nav-tabs"><a class="img_tab active" href="http://bbs.csdn.net/topics/390412274#tab_upload">本地上传</a><a class="img_tab" href="http://bbs.csdn.net/topics/390412274#tab_weburl">网络图片</a></div><div class="tab_panel active" id="tab_upload"><div class="set_img"><iframe src="about:blank"></iframe></div></div><div class="tab_panel" id="tab_weburl"><input type="text" placeholder="图片地址" id="af_cm_img_url"><input type="text" placeholder="图片说明" id="af_cm_img_alt"><div class="text-right"><span class="btn btn-default btn-sm" id="add_img_btn">插入图片</span> </div></div> </div></div> <textarea id="editor_all" rows="8" style="display: none;"></textarea><div class="editor-toolbar"><i class="separator">|</i><a class="icon-headline" title="标题一（Ctrl+Alt+1）"></a><a class="icon-heading" title="标题二（Ctrl+Alt+2）"></a><a class="icon-bold" title="粗体（Ctrl+B）"></a><a class="icon-italic" title="斜体（Ctrl+I）"></a><i class="separator">|</i><a class="icon-quote-left" title="引用（Ctrl+’）"></a><a class="icon-code" title="插入代码片（Ctrl+,）"></a><a class="icon-list-ul" title="无序列表（Ctrl+L）"></a><a class="icon-list-ol" title="有序列表（Ctrl+Alt+L）"></a><i class="separator">|</i><a class="icon-link" title="添加链接（Ctrl+K）"></a><a class="icon-picture" title="添加图片（Ctrl+Alt+I）"></a><i class="separator">|</i><a class="icon-reply" title="撤退（Ctrl+Z）"></a><a class="icon-share-alt" title="前进（Ctrl+Shift+Z）"></a><i class="separator">|</i><a class="icon-info" href="http://ask.csdn.net/pages/markdown" target="_blank" title="markdown语法参考"></a><a class="icon-preview" title="预览"></a><i class="separator">|</i></div><div class="CodeMirror cm-s-paper CodeMirror-focused"><div style="overflow: hidden; position: relative; width: 3px; height: 0px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" style="position: absolute; padding: 0px; width: 1000px; height: 1em; outline: none; font-size: 4px;" tabindex="0"></textarea></div><div class="CodeMirror-hscrollbar"><div style="height: 1px;"></div></div><div class="CodeMirror-vscrollbar"><div style="width: 1px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-gutter-filler"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="min-width: 33px;"><div style="position: relative;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre>&nbsp;<span style="display: inline-block; width: 1px; margin-right: -1px;">&nbsp;</span></pre></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code"></div><div class="CodeMirror-cursor">&nbsp;</div><div class="CodeMirror-cursor CodeMirror-secondarycursor">&nbsp;</div></div></div></div></div><div style="position: absolute; height: 30px; width: 1px;"></div><div class="CodeMirror-gutters" style="display: none;"></div></div></div><div class="editor-statusbar"><span class="lines">0</span><span class="words">0</span><span class="cursor">0:0</span></div><div class="div_tags clearfix"><div id="divSearchTags" class="tags_con"><input type="text"></div><input type="hidden" name="txtSearchTags"></div><div id="ask2_tagRecomm_div" class="drt_tagRecomm tracking-ad" data-mod="popu_73"><span class="drt_tit">推荐标签：</span></div></div><div class="success"><div class="left_area"><input id="chk_cb" type="checkbox"><span class="wyxs">我要悬赏</span><input id="cb_num" class="cb_num" readonly="true"><span class="phib_rii"><span> 币</span></span></div><a href="http://bbs.csdn.net/topics/390412274#" nodetype="cancel" class="cancel">取消</a><a href="http://bbs.csdn.net/topics/390412274#" nodetype="ok" class="ok">发布</a></div></div><div id="common_ask_div_sc" class="searchContainer"><div class="sTitle">可能存在类似的问题：</div><div class="sFooter"><a class="sFirstNewAsk">我想提一个新问题</a></div></div><div id="tag-suggest-pop">
+  <div class="relative">
+    <div class="close"></div>
+    <div class="content"></div>
+  </div>
+</div><ul style="position: absolute; min-width: 160px; border: 1px solid rgb(210, 210, 210); margin: 0px; padding: 0px; list-style: none; display: none; box-shadow: rgb(237, 237, 237) 0px 0px 5px; background-color: rgb(255, 255, 255);"></ul></body></html>
