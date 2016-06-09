@@ -15,3 +15,5 @@ jar -cvf DominNameCount.jar DominNameCount*.class
 /usr/local/hadoop/bin/hadoop jar DominNameCount.jar DominNameCount input2 output5
 
 /usr/local/hadoop/bin/hadoop jar DominNameCount.jar DominNameCount input3 output5
+
+55 84 440 597 198 170 8 212 304 278
