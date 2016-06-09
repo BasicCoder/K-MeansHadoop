@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.apache.hadoop.io.DoubleWritable"/>
+<fullyQualifiedTypeName name="java.util.Iterator"/>
+<fullyQualifiedTypeName name="org.apache.hadoop.mapred.OutputCollector"/>
+<fullyQualifiedTypeName name="org.apache.hadoop.mapred.Reporter"/>
+</qualifiedTypeNameHistroy>
