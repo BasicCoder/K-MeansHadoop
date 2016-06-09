@@ -137,7 +137,7 @@ public class KMeans extends Configured implements Tool{
         Sample center=new Sample();;
         int count=0;
         @Override
-        //更新每个质心（除最后一个）
+        //鏇存柊姣忎釜璐ㄥ績锛堥櫎鏈�鍚庝竴涓級
         public void reduce(IntWritable key,Iterable values,Context context) throws IOException,InterruptedException{
             while(values.iterator().hasNext()){
                 Sample value = (Sample)values.iterator().next();
@@ -157,7 +157,7 @@ public class KMeans extends Configured implements Tool{
             }
         }
         @Override
-        //更新最后一个质心
+        //鏇存柊鏈�鍚庝竴涓川蹇�
         public void cleanup(Context context) throws IOException,InterruptedException{
             for(int i=0;i < center.arr.length;i++)
                 center.arr[i]/=count;
@@ -172,7 +172,7 @@ public class KMeans extends Configured implements Tool{
         Job job=new Job(conf);
         job.setJarByClass(KMeans.class);
          
-        //质心文件每行的第一个数字是索引
+        //璐ㄥ績鏂囦欢姣忚鐨勭涓�涓暟瀛楁槸绱㈠紩
         FileInputFormat.setInputPaths(job, "/user/hadoop/input/centers");
         Path outDir=new Path("/user/hadoop/output");
         fs.delete(outDir,true);
@@ -191,7 +191,7 @@ public class KMeans extends Configured implements Tool{
         Configuration conf = new Configuration();
         FileSystem fs=FileSystem.get(conf);
          
-        //样本数据文件中每个样本不需要标记索引
+        //鏍锋湰鏁版嵁鏂囦欢涓瘡涓牱鏈笉闇�瑕佹爣璁扮储寮�
         Path dataFile=new Path("/user/hadoop/input/data");
         DistributedCache.addCacheFile(dataFile.toUri(), conf);
  
@@ -204,8 +204,8 @@ public class KMeans extends Configured implements Tool{
                 && (!stopIteration(conf)));
         log.info("Success.Iteration=" + iteration);
          
-        //迭代完成后再执行一次mapper，输出每个样本点所属的分类--在/user/hadoop/output2/part-m-00000中
-        //质心文件保存在/user/hadoop/input/centers中
+        //杩唬瀹屾垚鍚庡啀鎵ц涓�娆apper锛岃緭鍑烘瘡涓牱鏈偣鎵�灞炵殑鍒嗙被--鍦�/user/hadoop/output2/part-m-00000涓�
+        //璐ㄥ績鏂囦欢淇濆瓨鍦�/user/hadoop/input/centers涓�
         Job job=new Job(conf);
         job.setJarByClass(KMeans.class);
          

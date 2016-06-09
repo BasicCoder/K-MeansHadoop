@@ -191,7 +191,7 @@ public class KMeans extends Configured implements Tool{
         Configuration conf = new Configuration();
         FileSystem fs=FileSystem.get(conf);
          
-        //样本数据文件中每个样本不需要标记索引
+        //鏍锋湰鏁版嵁鏂囦欢涓瘡涓牱鏈笉闇�瑕佹爣璁扮储寮�
         Path dataFile=new Path("/user/hadoop/input/data");
         DistributedCache.addCacheFile(dataFile.toUri(), conf);
  
@@ -204,8 +204,8 @@ public class KMeans extends Configured implements Tool{
                 && (!stopIteration(conf)));
         log.info("Success.Iteration=" + iteration);
          
-        //迭代完成后再执行一次mapper，输出每个样本点所属的分类--在/user/hadoop/output2/part-m-00000中
-        //质心文件保存在/user/hadoop/input/centers中
+        //杩唬瀹屾垚鍚庡啀鎵ц涓�娆apper锛岃緭鍑烘瘡涓牱鏈偣鎵�灞炵殑鍒嗙被--鍦�/user/hadoop/output2/part-m-00000涓�
+        //璐ㄥ績鏂囦欢淇濆瓨鍦�/user/hadoop/input/centers涓�
         Job job=new Job(conf);
         job.setJarByClass(KMeans.class);
          

@@ -204,8 +204,8 @@ public class KMeans extends Configured implements Tool{
                 && (!stopIteration(conf)));
         log.info("Success.Iteration=" + iteration);
          
-        //迭代完成后再执行一次mapper，输出每个样本点所属的分类--在/user/hadoop/output2/part-m-00000中
-        //质心文件保存在/user/hadoop/input/centers中
+        //迭代完成后再执行一次mapper，输出每个样本点所属的分类--在/user/orisun/output2/part-m-00000中
+        //质心文件保存在/user/orisun/input/centers中
         Job job=new Job(conf);
         job.setJarByClass(KMeans.class);
          
