@@ -135,13 +135,13 @@ public class KMeans extends Configured implements Tool{
         }
     }
      
-    public static class UpdateCenterReducer extends Reducer<IntWritable, Sample, IntWritable, Sample> {
+    public static class UpdateCenterReducer extends Reducer<Text, IntWritable, IntWritable, Sample> {
         int prev=-1;
-        Sample center = new Sample();;
+        Sample center=new Sample();;
         int count=0;
-      //更新每个质心（除最后一个）
         @Override
-        public void reduce(IntWritable key, Iterator<Sample> values, Context context) throws IOException, InterruptedException{
+        //更新每个质心（除最后一个）
+        public void reduce(IntWritable key, Iterator<Sample> values, OutputCollector<Text, IntWritable> output, Reporter reporter) throws IOException{
             while(values.hasNext()){
                 Sample value = (Sample)values.next();
                 if(key.get()!=prev){

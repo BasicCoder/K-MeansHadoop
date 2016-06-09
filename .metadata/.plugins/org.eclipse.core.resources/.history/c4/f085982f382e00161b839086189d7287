@@ -139,8 +139,8 @@ public class KMeans extends Configured implements Tool{
         int prev=-1;
         Sample center = new Sample();;
         int count=0;
-      //更新每个质心（除最后一个）
         @Override
+        //更新每个质心（除最后一个）
         public void reduce(IntWritable key, Iterator<Sample> values, Context context) throws IOException, InterruptedException{
             while(values.hasNext()){
                 Sample value = (Sample)values.next();
