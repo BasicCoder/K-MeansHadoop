@@ -14,6 +14,7 @@ import org.apache.hadoop.filecache.DistributedCache;
 import org.apache.hadoop.fs.FSDataInputStream;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -39,10 +40,10 @@ public class KMeans extends Configured implements Tool{
         Path pervCenterFile=new Path("/user/hadoop/input/centers");
         Path currentCenterFile=new Path("/user/hadoop/output/part-r-00000");
         if(!(fs.exists(pervCenterFile) && fs.exists(currentCenterFile))){
-            log.info("两个质心文件需要同时存在");
+            log.info("涓や釜璐ㄥ績鏂囦欢闇�瑕佸悓鏃跺瓨鍦�");
             System.exit(1);
         }
-        //比较前后两次质心的变化是否小于阈值，决定迭代是否继续
+        //姣旇緝鍓嶅悗涓ゆ璐ㄥ績鐨勫彉鍖栨槸鍚﹀皬浜庨槇鍊硷紝鍐冲畾杩唬鏄惁缁х画
         boolean stop=true;
         String line1,line2;
         FSDataInputStream in1=fs.open(pervCenterFile);
@@ -67,33 +68,33 @@ public class KMeans extends Configured implements Tool{
                 break;
             }
         }
-        //如果还要进行下一次迭代，就用当前质心替代上一次的质心
+        //濡傛灉杩樿杩涜涓嬩竴娆¤凯浠ｏ紝灏辩敤褰撳墠璐ㄥ績鏇夸唬涓婁竴娆＄殑璐ㄥ績
         if(stop==false){
             fs.delete(pervCenterFile,true);
             if(fs.rename(currentCenterFile, pervCenterFile)==false){
-                log.error("质心文件替换失败");
+                log.error("璐ㄥ績鏂囦欢鏇挎崲澶辫触");
                 System.exit(1);
             }
         }
         return stop;
     }
      
-    public static class ClusterMapper extends Mapper {
-        Vector centers = new Vector();
+    public static class ClusterMapper extends Mapper<LongWritable, Text, IntWritable, Sample>{
+        Vector<Sample> centers = new Vector<Sample>();
         @Override
-        //清空centers
+        //娓呯┖centers
         public void setup(Context context){
             for (int i = 0; i < K; i++) {
                 centers.add(new Sample());
             }
         }
         @Override
-        //从输入文件读入centers
+        //浠庤緭鍏ユ枃浠惰鍏enters
         public void map(LongWritable key, Text value, Context context)
                 throws IOException, InterruptedException {
             String []str=value.toString().split("\\s+");
             if(str.length!=Sample.DIMENTION+1){
-                log.error("读入centers时维度不对");
+                log.error("璇诲叆centers鏃剁淮搴︿笉瀵�");
                 System.exit(1);
             }
             int index=Integer.parseInt(str[0]);
@@ -101,14 +102,14 @@ public class KMeans extends Configured implements Tool{
                 centers.get(index).arr[i-1]=Double.parseDouble(str[i]);
         }
         @Override
-        //找到每个数据点离哪个质心最近
+        //鎵惧埌姣忎釜鏁版嵁鐐圭鍝釜璐ㄥ績鏈�杩�
         public void cleanup(Context context) throws IOException,InterruptedException {
             Path []caches=DistributedCache.getLocalCacheFiles(context.getConfiguration());
             if(caches==null || caches.length <= 0){
-                log.error("data文件不存在");
+                log.error("data鏂囦欢涓嶅瓨鍦�");
                 System.exit(1);
             }
-            BufferedReader br=new BufferedReader(new FileReader(caches[0].toString()));
+            BufferedReader br = new BufferedReader(new FileReader(caches[0].toString()));
             Sample sample;
             String line;
             while((line=br.readLine())!=null){
@@ -131,15 +132,15 @@ public class KMeans extends Configured implements Tool{
         }
     }
      
-    public static class UpdateCenterReducer extends Reducer<DoubleWritable, DoubleWritable, DoubleWritable, Text> {
+    public static class UpdateCenterReducer extends Reducer<IntWritable, IntWritable, IntWritable, Sample> {
         int prev=-1;
         Sample center=new Sample();;
         int count=0;
         @Override
-        //更新每个质心（除最后一个）
+        //鏇存柊姣忎釜璐ㄥ績锛堥櫎鏈�鍚庝竴涓級
         public void reduce(IntWritable key,Iterable values,Context context) throws IOException,InterruptedException{
             while(values.iterator().hasNext()){
-                Sample value=values.iterator().next();
+                Sample value = (Sample)values.iterator().next();
                 if(key.get()!=prev){
                     if(prev!=-1){
                         for(int i=0;i < center.arr.length;i++)
@@ -156,7 +157,7 @@ public class KMeans extends Configured implements Tool{
             }
         }
         @Override
-        //更新最后一个质心
+        //鏇存柊鏈�鍚庝竴涓川蹇�
         public void cleanup(Context context) throws IOException,InterruptedException{
             for(int i=0;i < center.arr.length;i++)
                 center.arr[i]/=count;
@@ -171,7 +172,7 @@ public class KMeans extends Configured implements Tool{
         Job job=new Job(conf);
         job.setJarByClass(KMeans.class);
          
-        //质心文件每行的第一个数字是索引
+        //璐ㄥ績鏂囦欢姣忚鐨勭涓�涓暟瀛楁槸绱㈠紩
         FileInputFormat.setInputPaths(job, "/user/hadoop/input/centers");
         Path outDir=new Path("/user/hadoop/output");
         fs.delete(outDir,true);
@@ -190,7 +191,7 @@ public class KMeans extends Configured implements Tool{
         Configuration conf = new Configuration();
         FileSystem fs=FileSystem.get(conf);
          
-        //样本数据文件中每个样本不需要标记索引
+        //鏍锋湰鏁版嵁鏂囦欢涓瘡涓牱鏈笉闇�瑕佹爣璁扮储寮�
         Path dataFile=new Path("/user/hadoop/input/data");
         DistributedCache.addCacheFile(dataFile.toUri(), conf);
  
@@ -203,8 +204,8 @@ public class KMeans extends Configured implements Tool{
                 && (!stopIteration(conf)));
         log.info("Success.Iteration=" + iteration);
          
-        //迭代完成后再执行一次mapper，输出每个样本点所属的分类--在/user/hadoop/output2/part-m-00000中
-        //质心文件保存在/user/hadoop/input/centers中
+        //杩唬瀹屾垚鍚庡啀鎵ц涓�娆apper锛岃緭鍑烘瘡涓牱鏈偣鎵�灞炵殑鍒嗙被--鍦�/user/hadoop/output2/part-m-00000涓�
+        //璐ㄥ績鏂囦欢淇濆瓨鍦�/user/hadoop/input/centers涓�
         Job job=new Job(conf);
         job.setJarByClass(KMeans.class);
          
