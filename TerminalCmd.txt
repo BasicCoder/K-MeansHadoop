@@ -1,7 +1,7 @@
-https://raw.githubusercontent.com/BasicCoder/K-MeansHadoop/master/KMeans.java
-https://raw.githubusercontent.com/BasicCoder/K-MeansHadoop/master/Sample.java
-https://raw.githubusercontent.com/BasicCoder/K-MeansHadoop/master/data
-https://raw.githubusercontent.com/BasicCoder/K-MeansHadoop/master/centers
+wget https://raw.githubusercontent.com/BasicCoder/K-MeansHadoop/master/KMeans.java
+wget https://raw.githubusercontent.com/BasicCoder/K-MeansHadoop/master/Sample.java
+wget https://raw.githubusercontent.com/BasicCoder/K-MeansHadoop/master/data
+wget https://raw.githubusercontent.com/BasicCoder/K-MeansHadoop/master/centers
 
 javac -cp ../share/hadoop/common/hadoop-common-2.6.0.jar:../share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.6.0.jar:../share/hadoop/common/lib/commons-cli-1.2.jar:./commons-logging-1.2/commons-logging-1.2.jar:./commons-logging-1.2/commons-logging-1.2-javadoc.jar KMeans.java Sample.java -d ./
 
@@ -10,7 +10,12 @@ jar -cvf KMeans.jar kmeans/KMeans*class kmeans/Sample.class
 
 bin/hadoop jar KMeans/KMeans.jar kmeans/KMeans
 
+bin/hdfs dfs –put ./KMeans/data input/data
+bin/hdfs dfs -put ./KMeans/centers input/centers
+
 bin/hadoop kill  application_1465483633236_0002
+
+#Another Hadoop Job
 
 javac -cp ../share/hadoop/common/hadoop-common-2.6.0.jar:../share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.6.0.jar:../share/hadoop/common/lib/commons-cli-1.2.jar DominNameCount.java -d ./
 https://raw.githubusercontent.com/BasicCoder/K-MeansHadoop/master/DominNameCount/code/DominNameCount.java
